@@ -14,9 +14,9 @@ The project was funded by the Ministry of Science, Innovation, and Universities 
 Project: PLEC2022-009271 funded by MICIU/AEI /10.13039/501100011033 and by the European Union Next GenerationEU/ PRTR.
 
 ## Features
-- Detection and classification of VT events from DAS data.
+- Detection and classification of volcano-seismic events from DAS data.
 - Utilizes frequency-based signal energy features to enhance spatial and temporal contextual information.
-- High accuracy in detecting and classifying complete VT waveforms.
+- High accuracy in detecting and classifying complete waveforms.
 - Real-time processing capabilities for continuous monitoring.
 - Generalizable to different volcanic environments with minimal retraining.
 
@@ -63,7 +63,42 @@ conda activate RNN_DAS
 
 ## Running the Model
 
-### Command-Line Execution with Argparse
+The model is designed to read data in HDF5 format with the following structure:
+
+```
+file_path
+│
+└───"data" (dataset)
+    │
+    ├───data (2D matrix of strain or strain rate)
+    │    └───[channels x time_samples] 
+    │
+    ├───attrs
+         │
+         ├───"dt_s" (temporal sampling in seconds)
+         ├───"dx_m" (spatial sampling in meters)
+         └───"begin_time" (start date in '1970-01-01T00:00:00.000' format)
+```
+
+- `data`: A 2D matrix of strain or strain rate, with dimensions channels x time_samples of DAS data.
+- `dt_s`: The temporal sampling in seconds (s).
+- `dx_m`: The spatial sampling in meters (m) between channels.
+- `begin_time`: The start date in the format `'1970-01-01T00:00:00.000'`.
+
+To run the model, use a `file_list.txt` that contains the names (event IDs) of all the HDF5 files to be processed by the model. This file should list each event ID on a new line, for example:
+
+```
+event_id_1
+event_id_2
+event_id_3
+...
+```
+
+This list will be used by the model to iterate through and process each file.
+
+### Command-Line Execution
+
+
 To run the model using command-line arguments, use the provided script with `argparse`. The script allows users to specify input parameters such as the dataset location, model configuration, and output options.
 
 Example usage:
