@@ -8,7 +8,7 @@ RNN-DAS detects VT events, analyzes their temporal evolution, and classifies the
 ## Features
 - Detection and classification of VT events from DAS data.
 - Utilizes frequency-based signal energy features to enhance spatial and temporal contextual information.
-- High accuracy (~97%) in detecting and classifying complete VT waveforms.
+- High accuracy in detecting and classifying complete VT waveforms.
 - Real-time processing capabilities for continuous monitoring.
 - Generalizable to different volcanic environments with minimal retraining.
 
