@@ -27,7 +27,7 @@ def create_features(H, window_duration, overlap_duration, mean, std):
     channel_groups = split_channels_features(n, num_processes)
 
     # Process all channel groups simultaneously
-    print(">> Processing the signal...")
+    print(">> Computing features...")
     results = Parallel(n_jobs=num_processes)( 
         delayed(process_channel_group_features)(H, 100, window_duration, overlap_duration, start, end, mean, std) 
         for start, end in channel_groups
@@ -35,7 +35,6 @@ def create_features(H, window_duration, overlap_duration, mean, std):
     results = [res.numpy() for res in results]
     # Concatenate the results from all processes
     features = np.concatenate(results, axis=0)
-    #print(features.shape)
     #print(features.shape) #[batch, time_step, features]
     return features
 
