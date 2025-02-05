@@ -22,21 +22,42 @@ Project: PLEC2022-009271 funded by MICIU/AEI /10.13039/501100011033 and by the E
 
 ## Installation and Requirements  
 
-To run RNN-DAS, install the required dependencies:  
-
-```bash
-pip install -r requirements.txt
-```  
- 
-Alternatively, you can install the provided Conda environment `RNN_DAS`.  
-
-The model has been **trained and tested** for functionality in:  
+The model has been **trained and tested** for functionality in:
 
 - **Python** 3.7  
 - **GPU**: NVIDIA GeForce GTX 1080  
 - **CUDA**: version 9.0  
 
-Therefore, the model should work without issues on these versions and later.
+The model should work without issues on these versions and later, both on **Windows** and **Linux**.  
+
+### Windows Installation
+
+To run RNN-DAS on **Windows**, you can install the required dependencies using the provided `requirements_windows.txt` file:  
+
+```bash
+pip install -r requirements_windows.txt
+```  
+
+Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_windows.yml` file:  
+
+```bash
+conda env create -f RNN_DAS_windows.yml
+```
+
+### Linux Installation
+
+To run RNN-DAS on **Linux**, you can install the required dependencies using the provided `requirements_linux.txt` file:  
+
+```bash
+pip install -r requirements_linux.txt
+```  
+
+Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_linux.yml` file:  
+
+```bash
+conda env create -f RNN_DAS_linux.yml
+```  
+
 
 ## Running the Model
 
