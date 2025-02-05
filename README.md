@@ -20,14 +20,23 @@ Project: PLEC2022-009271 funded by MICIU/AEI /10.13039/501100011033 and by the E
 - Real-time processing capabilities for continuous monitoring.
 - Generalizable to different volcanic environments with minimal retraining.
 
-## Installation and Requirements
-To run RNN-DAS, install the required dependencies:
+## Installation and Requirements  
+
+To run RNN-DAS, install the required dependencies:  
 
 ```bash
 pip install -r requirements.txt
-```
+```  
+ 
+Alternatively, you can install the provided Conda environment `RNN_DAS`.  
 
-Ensure you have the necessary Deep Learning libraries such as TensorFlow or PyTorch (depending on the implementation) and signal processing tools.
+The model has been **trained and tested** for functionality in:  
+
+- **Python** 3.7  
+- **GPU**: NVIDIA GeForce GTX 1080  
+- **CUDA**: 419, version 9.0  
+
+Therefore, the model should work without issues on these versions and later.
 
 ## Running the Model
 
