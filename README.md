@@ -1,9 +1,21 @@
 # RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing
 
 ## Overview
-RNN-DAS is a novel Deep Learning model based on Recurrent Neural Networks (RNNs) with Long Short-Term Memory (LSTM) cells, designed for real-time Volcano-Seismic Signal Recognition (VSR) using Distributed Acoustic Sensing (DAS) measurements. The model was trained on a comprehensive dataset of Volcano-Tectonic (VT) events from the 2021 La Palma eruption, recorded by a High-fidelity submarine Distributed Acoustic Sensing array (HDAS) near the eruption site.
+RNN-DAS is an innovative Deep Learning model based on Recurrent Neural Networks (RNNs) with Long Short-Term Memory (LSTM) cells, developed for real-time Volcano-Seismic Signal Recognition (VSR) using Distributed Acoustic Sensing (DAS) measurements. The model was trained on a comprehensive dataset of Volcano-Tectonic (VT) events from the 2021 La Palma eruption, recorded by a high-fidelity submarine Distributed Acoustic Sensing array (HDAS) located near the eruption site.
 
-RNN-DAS detects VT events, analyzes their temporal evolution, and classifies their waveforms with approximately 97% accuracy. The model has demonstrated strong generalization capabilities for different time intervals and volcanoes, enabling continuous real-time seismic monitoring with minimal computational resources and retraining requirements.
+RNN-DAS is capable of detecting VT events, analyzing their temporal evolution, and classifying their waveforms with approximately 97% accuracy. The model has demonstrated excellent generalization capabilities for different time intervals and volcanoes, facilitating continuous, real-time seismic monitoring with minimal computational resources and retraining requirements.
+
+This software was developed as part of the DigiVolCan project - A digital infrastructure for forecasting volcanic eruptions in the Canary Islands.
+
+Acronym: DigiVolCan
+Title: A digital infrastructure for forecasting volcanic eruptions in the Canary Islands
+Reference: PLEC2022-009271
+
+The project was funded by the Ministry of Science, Innovation, and Universities / State Research Agency (MICIU/AEI), and the European Union through the Recovery, Transformation, and Resilience Plan, Next Generation EU Funds.
+
+The results from the RNN-DAS model are the outcome of collaboration between the University of Granada, the Canary Islands Volcanological Institute (INVOLCAN), the Institute of Technological and Renewable Energies (ITER), the University of La Laguna, and Aragón Photonics.
+
+Project: PLEC2022-009271 funded by MICIU/AEI /10.13039/501100011033 and by the European Union Next GenerationEU/ PRTR.
 
 ## Features
 - Detection and classification of VT events from DAS data.
