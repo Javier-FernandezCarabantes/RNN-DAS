@@ -34,7 +34,7 @@ The model has been **trained and tested** for functionality in:
 
 - **Python** 3.7  
 - **GPU**: NVIDIA GeForce GTX 1080  
-- **CUDA**: 419, version 9.0  
+- **CUDA**: version 9.0  
 
 Therefore, the model should work without issues on these versions and later.
 
