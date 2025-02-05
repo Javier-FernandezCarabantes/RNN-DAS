@@ -6,15 +6,9 @@ RNN-DAS is an innovative Deep Learning model based on Recurrent Neural Networks 
 RNN-DAS is capable of detecting VT events, analyzing their temporal evolution, and classifying their waveforms with approximately 97% accuracy. The model has demonstrated excellent generalization capabilities for different time intervals and volcanoes, facilitating continuous, real-time seismic monitoring with minimal computational resources and retraining requirements.
 
 This software was developed as part of the DigiVolCan project - A digital infrastructure for forecasting volcanic eruptions in the Canary Islands.
-
-Acronym: DigiVolCan
-Title: A digital infrastructure for forecasting volcanic eruptions in the Canary Islands
-Reference: PLEC2022-009271
-
-The project was funded by the Ministry of Science, Innovation, and Universities / State Research Agency (MICIU/AEI), and the European Union through the Recovery, Transformation, and Resilience Plan, Next Generation EU Funds.
-
 The results from the RNN-DAS model are the outcome of collaboration between the University of Granada, the Canary Islands Volcanological Institute (INVOLCAN), the Institute of Technological and Renewable Energies (ITER), the University of La Laguna, and Aragón Photonics.
 
+The project was funded by the Ministry of Science, Innovation, and Universities / State Research Agency (MICIU/AEI) of Spain, and the European Union through the Recovery, Transformation, and Resilience Plan, Next Generation EU Funds.
 Project: PLEC2022-009271 funded by MICIU/AEI /10.13039/501100011033 and by the European Union Next GenerationEU/ PRTR.
 
 ## Features
