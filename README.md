@@ -32,31 +32,33 @@ The model should work without issues on these versions and later, both on **Wind
 
 ### Windows Installation
 
-To run RNN-DAS on **Windows**, you can install the required dependencies using the provided `requirements_windows.txt` file:  
+To run RNN-DAS on **Windows**, you can install the required dependencies using the provided `requirements_windows.txt` file from the `requirements` folder in the GitHub repository:  
 
 ```bash
-pip install -r requirements_windows.txt
+pip install -r requirements/requirements_windows.txt
 ```  
 
-Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_windows.yml` file:  
+Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_windows.yml` file from the `requirements` folder:  
 
 ```bash
-conda env create -f RNN_DAS_windows.yml
+conda env create -f requirements/RNN_DAS_windows.yml
+conda activate RNN_DAS
 ```
 
 ### Linux Installation
 
-To run RNN-DAS on **Linux**, you can install the required dependencies using the provided `requirements_linux.txt` file:  
+To run RNN-DAS on **Linux**, you can install the required dependencies using the provided `requirements_linux.txt` file from the `requirements` folder in the GitHub repository:  
 
 ```bash
-pip install -r requirements_linux.txt
+pip install -r requirements/requirements_linux.txt
 ```  
 
-Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_linux.yml` file:  
+Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_linux.yml` file from the `requirements` folder:  
 
 ```bash
-conda env create -f RNN_DAS_linux.yml
-```  
+conda env create -f requirements/RNN_DAS_linux.yml
+conda activate RNN_DAS
+```
 
 
 ## Running the Model
