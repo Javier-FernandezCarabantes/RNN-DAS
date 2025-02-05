@@ -63,7 +63,7 @@ To explore the example, open the notebook:
 jupyter notebook examples/RNN-DAS_LaPalma.ipynb
 ```
 
-To apply the model to the full dataset in the Jupyter Notebook, simply download the data from [https://drive.google.com/drive/folders/14WtA6HrQX0GVHJKBOkrGRWHS6EuOw1uo?usp=sharing] and use it within the notebook.  
+To apply the model to the full dataset in the Jupyter Notebook, simply download the data from https://drive.google.com/drive/folders/14WtA6HrQX0GVHJKBOkrGRWHS6EuOw1uo?usp=sharing and use it within the notebook.  
 
 
 
