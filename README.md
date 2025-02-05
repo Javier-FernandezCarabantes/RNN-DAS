@@ -56,13 +56,17 @@ python run_model.py --help
 ```
 
 ### Example Notebook: Running RNN-DAS on La Palma Data
-An example Jupyter Notebook is provided to demonstrate how the model operates on real data from the 2021 La Palma eruption. This notebook walks through loading the DAS dataset, preprocessing signals, and running the trained model on a sample 3-minute VT event with a magnitude of Ml=4.04.
-
+An example Jupyter Notebook is provided to demonstrate how the model operates on real data from the 2021 La Palma eruption. This notebook walks through loading the DAS dataset, preprocessing signals, and running the trained model on a sample 3-minute VT event with a magnitude of Ml=4.04. The provided test data corresponds only to the first 100 channels of the DAS array due to repository size limitations. 
 To explore the example, open the notebook:
 
 ```bash
 jupyter notebook examples/RNN-DAS_LaPalma.ipynb
 ```
+
+To apply the model to the full dataset in the Jupyter Notebook, simply download the data from [this link] and use it within the notebook.  
+
+
+
 
 ## Citation
 If you use this model or any part of this repository, please cite the corresponding article:
