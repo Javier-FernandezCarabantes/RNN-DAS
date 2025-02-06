@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import pickle
-
+from datetime import datetime
 
 
 def write_pickle(data, filename):
@@ -41,7 +41,7 @@ def detect_phases(output_csv_name, start_date, probabilities, fsamp=100, probabi
     num_channels, num_windows, num_classes = probabilities.shape
     predictions = np.argmax(probabilities, axis=2)
     results = []
-
+    start_date = datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S.%f")
     for channel_index in range(num_channels):
         current_window = 0
         last_event_end = -float('inf')  # Index of the end of the last detected event for the channel

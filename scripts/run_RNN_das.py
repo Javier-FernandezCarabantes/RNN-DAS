@@ -67,7 +67,7 @@ def run_batch_model(model, data, fileids):
         predictions, probabilities: Model outputs.
     """
     for fileid in fileids:
-        predictions, probabilities = predict(model, data)  # Adjust n_classes as needed
+        predictions, probabilities = predict(model, data)  
         return predictions, probabilities
 
 

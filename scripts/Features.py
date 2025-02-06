@@ -120,11 +120,11 @@ def process_channel_group_features(H, srate, window_duration, overlap_duration, 
     std = std.clone().detach() if isinstance(std, torch.Tensor) else torch.tensor(std, dtype=torch.float32)
     mean = mean.unsqueeze(dim=0)  # [1, 144] to avoid issues with normalization
     std = std.unsqueeze(dim=0)  # [1, 144]
-    print(std, mean)
+    # print(std, mean)
     n, m = H.shape  # Data dimensions: n_channels x n_samples
 
     for sp in range(start, end):
-        print(sp)
+        #print(sp)
         # Process the previous channel (if it's not the first channel)
         if sp == 0:
             lfb_previous, lfb_delta_previous, lfb_delta_delta_previous = calculate_LFB(
@@ -156,7 +156,7 @@ def process_channel_group_features(H, srate, window_duration, overlap_duration, 
             lfb_current.T, lfb_delta_current.T, lfb_delta_delta_current.T,
             lfb_next.T, lfb_delta_next.T, lfb_delta_delta_next.T
         ), axis=1)
-        print(feature.shape)
+        #print(feature.shape)
         # Normalize the features
         feature = torch.tensor(feature, dtype=torch.float32)
         feature = (feature - mean) / std
