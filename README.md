@@ -102,7 +102,7 @@ To execute the model, use the following command:
 python RNN_DAS.py --files_id files_id.txt
 ```
 
-Where `files_id.txt` is the required text file containing the list of event IDs. By default, this file should be located in the `data_to_predict` folder.
+Where `files_id.txt` is the required text file containing the list of event IDs. By default, the data `.h5` files should be located in the `data_to_predict` folder.
 
 To customize additional parameters, use:
 
@@ -112,11 +112,11 @@ python RNN_DAS.py --help
 
 Maintaining the folder structure provided in the repository is recommended to ensure proper functionality, although it is possible to modify it by changing the argparse parameters.
 
-### Saving Results
+#### Saving Results
 
 By default, the model saves results in both CSV and MiniSEED (MSEED) formats.
 
-#### CSV Output
+##### CSV Output
 The CSV file contains event detections with the following structure:
 
 ```
@@ -135,7 +135,7 @@ channel_index  event_index  event_time  event_score  coda_index  coda_time  wind
 - `coda_time`: Timestamp of event end.
 - `windows`: Temporal windows selected by the model as events.
 
-#### MiniSEED (MSEED) Output
+##### MiniSEED (MSEED) Output
 The MiniSEED files store detected event waveforms. Each trace corresponds to a detected event with a probability threshold (default: 0.9). Example:
 
 ```
