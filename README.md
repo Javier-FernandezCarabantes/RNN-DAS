@@ -154,6 +154,7 @@ Each trace includes:
 - The sampling rate and number of samples.
 
 Example:
+
 ![Trace_example](./trace_example.png)
 
 ### Example Notebook: Running RNN-DAS on La Palma Data
