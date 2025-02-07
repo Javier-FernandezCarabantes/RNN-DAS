@@ -91,7 +91,7 @@ event_id_3
 To execute the model, use the following command:
 
 ```bash
-python RNN_DAS.py --files_id files_id.txt
+python RNN-DAS.py --files_id files_id.txt
 ```
 
 Where `files_id.txt` is the required text file containing the list of event IDs. By default, the data `.h5` files should be located in the `data_to_predict` folder.
@@ -99,7 +99,89 @@ Where `files_id.txt` is the required text file containing the list of event IDs.
 To customize additional parameters, use:
 
 ```bash
-python RNN_DAS.py --help
+python RNN-DAS.py --help
+usage: RNN-DAS.py [-h] [--model_path MODEL_PATH]
+                  [--normalization_path NORMALIZATION_PATH]
+                  [--files_id FILES_ID] [--data_folder DATA_FOLDER]
+                  [--pre_processing PRE_PROCESSING] [--dt DT] [--dx DX]
+                  [--plot_das PLOT_DAS] [--plot_das_bi PLOT_DAS_BI]
+                  [--plot_das_grammar PLOT_DAS_GRAMMAR]
+                  [--plot_stream_stack PLOT_STREAM_STACK]
+                  [--plot_threshold PLOT_THRESHOLD]
+                  [--plot_channel PLOT_CHANNEL] [--grammar GRAMMAR]
+                  [--predictions_saved PREDICTIONS_SAVED]
+                  [--probabilities_saved PROBABILITIES_SAVED]
+                  [--save_results_csv SAVE_RESULTS_CSV]
+                  [--save_results_mseed SAVE_RESULTS_MSEED]
+                  [--grammar_save GRAMMAR_SAVE]
+                  [--grammar_parameters_threshold GRAMMAR_PARAMETERS_THRESHOLD]
+                  [--grammar_parameter_threshold_channels GRAMMAR_PARAMETER_THRESHOLD_CHANNELS]
+                  [--grammar_parameter_interval_size GRAMMAR_PARAMETER_INTERVAL_SIZE]
+                  [--grammar_parameter_trigger_on GRAMMAR_PARAMETER_TRIGGER_ON]
+                  [--grammar_parameter_trigger_off GRAMMAR_PARAMETER_TRIGGER_OFF]
+                  [--threshold_mseed THRESHOLD_MSEED]
+                  [--network_code NETWORK_CODE]
+                  [--station_prefix STATION_PREFIX]
+                  [--location_code LOCATION_CODE]
+
+Run the RNN-DAS model with specified configurations.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --model_path MODEL_PATH
+                        Path to the trained RNN-DAS model.
+  --normalization_path NORMALIZATION_PATH
+                        Path to the normalization file.
+  --files_id FILES_ID   Path to the text file containing the list of file IDs.
+  --data_folder DATA_FOLDER
+                        Path to the data files folder.
+  --pre_processing PRE_PROCESSING
+                        Apply pre-processing to the data before running the
+                        model (recommended).
+  --dt DT               Sampling time (in seconds)
+  --dx DX               Sampling spacing (in meters)
+  --plot_das PLOT_DAS   Plot DAS data before running the model.
+  --plot_das_bi PLOT_DAS_BI
+                        Plot DAS data with the grammar-based predictions.
+  --plot_das_grammar PLOT_DAS_GRAMMAR
+                        Plot grammar-based vs raw DAS predictions.
+  --plot_stream_stack PLOT_STREAM_STACK
+                        Plot stacked stream traces.
+  --plot_threshold PLOT_THRESHOLD
+                        Threshold value to consider a predominant probability
+                        class per frame when plotting.
+  --plot_channel PLOT_CHANNEL
+                        DAS channel to plot in the straingram and spectrogram
+                        subplots.
+  --grammar GRAMMAR     Enable grammar-based event detection.
+  --predictions_saved PREDICTIONS_SAVED
+                        Save model predictions.
+  --probabilities_saved PROBABILITIES_SAVED
+                        Save prediction probabilities.
+  --save_results_csv SAVE_RESULTS_CSV
+                        Save results in CSV format.
+  --save_results_mseed SAVE_RESULTS_MSEED
+                        Save waveform results in MiniSEED format.
+  --grammar_save GRAMMAR_SAVE
+                        Save grammar results.
+  --grammar_parameters_threshold GRAMMAR_PARAMETERS_THRESHOLD
+                        Threshold for grammar-based event detection.
+  --grammar_parameter_threshold_channels GRAMMAR_PARAMETER_THRESHOLD_CHANNELS
+                        Channel-based grammar threshold.
+  --grammar_parameter_interval_size GRAMMAR_PARAMETER_INTERVAL_SIZE
+                        Interval size for grammar-based analysis.
+  --grammar_parameter_trigger_on GRAMMAR_PARAMETER_TRIGGER_ON
+                        Trigger-on threshold for grammar-based detection.
+  --grammar_parameter_trigger_off GRAMMAR_PARAMETER_TRIGGER_OFF
+                        Trigger-off threshold for grammar-based detection.
+  --threshold_mseed THRESHOLD_MSEED
+                        Threshold for trace detection
+  --network_code NETWORK_CODE
+                        Network code (default: 'LP')
+  --station_prefix STATION_PREFIX
+                        Station prefix (default: 'DAS')
+  --location_code LOCATION_CODE
+                        Location code (default: 'XX')
 ```
 
 Maintaining the folder structure provided in the repository is recommended to ensure proper functionality, although it is possible to modify it by changing the argparse parameters.
