@@ -94,8 +94,6 @@ event_id_3
 ...
 ```
 
-The default location for this file is the `data_to_predict/` folder, but this can be modified with command-line arguments.
-
 ### Command-Line Execution
 
 To execute the model, use the following command:
@@ -112,7 +110,7 @@ To customize additional parameters, use:
 python RNN_DAS.py --help
 ```
 
-Maintaining the folder structure provided in the repository is recommended to ensure proper functionality.
+Maintaining the folder structure provided in the repository is recommended to ensure proper functionality, although it is possible to modify it by changing the argparse parameters.
 
 ### Saving Results
 
@@ -123,9 +121,9 @@ The CSV file contains event detections with the following structure:
 
 ```
 channel_index  event_index  event_time  event_score  coda_index  coda_time  windows
-0              0           7200        1970-01-01T00:01:12  1.000        9120       1970-01-01T00:01:31.200000  [15, 16, 17, 18]
-1              0          10080        1970-01-01T00:01:40.800000  0.741        10560      1970-01-01T00:01:45.600000  [21]
-2              1           7200        1970-01-01T00:01:12  0.938        10560      1970-01-01T00:01:45.600000  [15, 16, 17, 18, 19, 20, 21]
+0           7200        1970-01-01T00:01:12  1.000        9120       1970-01-01T00:01:31.200000  [15, 16, 17, 18]
+0          10080        1970-01-01T00:01:40  0.741        10560      1970-01-01T00:01:45.600000  [21]
+1           7200        1970-01-01T00:01:12  0.938        10560      1970-01-01T00:01:45.600000  [15, 16, 17, 18, 19, 20, 21]
 ...
 ```
 
