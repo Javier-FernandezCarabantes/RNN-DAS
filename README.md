@@ -227,6 +227,12 @@ To apply the model to the full dataset in the Jupyter Notebook, download the dat
 
 and use it within the notebook.
 
+## Retraining
+
+To carry out the retraining of the model and better adapt it to the characteristics of volcanic seismicity from a different volcanic environment, it is encouraged to contact the corresponding author for guidance and support. 
+
+You can reach the corresponding author at: **javierfyc@correo.ugr.es**  
+**Institution:** Universidad de Granada, Department of Signal Theory, Telematics and Communications.
 
 ## Citation
 If you use this model or any part of this repository, please cite the corresponding article:
