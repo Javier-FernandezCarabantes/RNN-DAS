@@ -114,7 +114,9 @@ Maintaining the folder structure provided in the repository is recommended to en
 
 #### Saving Results
 
-By default, the model saves results in both CSV and MiniSEED (MSEED) formats. The CSV files are stored in the RNN-DAS_picks folder, named according to the corresponding event_id. The MiniSEED files are saved in the RNN-DAS_waveforms folder, also named with the event_id. Additionally, different plotting options are stored in the plots folder. By default, the bi option is enabled, allowing users to visualize both the model’s prediction and the original data.
+By default, the model uses the probability results with the applied grammar function. These probabilities and predictions can also be stored in the `RNN-DAS_predictions` folder in `pkl` format if configured to do so.
+
+Using these probability results, the model generates outputs in both CSV and MiniSEED (MSEED) formats. The CSV files are stored in the `RNN-DAS_picks` folder, named according to the corresponding event_id. The MiniSEED files are saved in the `RNN-DAS_waveforms` folder, also named with the event_id. Additionally, different plotting options are stored in the `plots` folder. By default, the `bi` option is enabled, allowing users to visualize both the model’s prediction and the original data.
 
 ##### CSV Output
 The CSV file contains event detections with the following structure:
