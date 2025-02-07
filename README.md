@@ -127,61 +127,42 @@ usage: RNN-DAS.py [-h] [--model_path MODEL_PATH]
 Run the RNN-DAS model with specified configurations.
 
 optional arguments:
-  -h, --help            show this help message and exit
-  --model_path MODEL_PATH
-                        Path to the trained RNN-DAS model.
-  --normalization_path NORMALIZATION_PATH
-                        Path to the normalization file.
-  --files_id FILES_ID   Path to the text file containing the list of file IDs.
-  --data_folder DATA_FOLDER
-                        Path to the data files folder.
-  --pre_processing PRE_PROCESSING
-                        Apply pre-processing to the data before running the
-                        model (recommended).
-  --dt DT               Sampling time (in seconds)
-  --dx DX               Sampling spacing (in meters)
-  --plot_das PLOT_DAS   Plot DAS data before running the model.
-  --plot_das_bi PLOT_DAS_BI
-                        Plot DAS data with the grammar-based predictions.
-  --plot_das_grammar PLOT_DAS_GRAMMAR
-                        Plot grammar-based vs raw DAS predictions.
-  --plot_stream_stack PLOT_STREAM_STACK
-                        Plot stacked stream traces.
-  --plot_threshold PLOT_THRESHOLD
-                        Threshold value to consider a predominant probability
-                        class per frame when plotting.
-  --plot_channel PLOT_CHANNEL
-                        DAS channel to plot in the straingram and spectrogram
-                        subplots.
-  --grammar GRAMMAR     Enable grammar-based event detection.
-  --predictions_saved PREDICTIONS_SAVED
-                        Save model predictions.
-  --probabilities_saved PROBABILITIES_SAVED
-                        Save prediction probabilities.
-  --save_results_csv SAVE_RESULTS_CSV
-                        Save results in CSV format.
-  --save_results_mseed SAVE_RESULTS_MSEED
-                        Save waveform results in MiniSEED format.
-  --grammar_save GRAMMAR_SAVE
-                        Save grammar results.
-  --grammar_parameters_threshold GRAMMAR_PARAMETERS_THRESHOLD
-                        Threshold for grammar-based event detection.
-  --grammar_parameter_threshold_channels GRAMMAR_PARAMETER_THRESHOLD_CHANNELS
-                        Channel-based grammar threshold.
-  --grammar_parameter_interval_size GRAMMAR_PARAMETER_INTERVAL_SIZE
-                        Interval size for grammar-based analysis.
-  --grammar_parameter_trigger_on GRAMMAR_PARAMETER_TRIGGER_ON
-                        Trigger-on threshold for grammar-based detection.
-  --grammar_parameter_trigger_off GRAMMAR_PARAMETER_TRIGGER_OFF
-                        Trigger-off threshold for grammar-based detection.
-  --threshold_mseed THRESHOLD_MSEED
-                        Threshold for trace detection
-  --network_code NETWORK_CODE
-                        Network code (default: 'LP')
-  --station_prefix STATION_PREFIX
-                        Station prefix (default: 'DAS')
-  --location_code LOCATION_CODE
-                        Location code (default: 'XX')
+  -h, --help                                   Show this help message and exit
+  --model_path MODEL_PATH                       Path to the trained RNN-DAS model (default: './model/RNN-DAS_1150').
+  --normalization_path NORMALIZATION_PATH       Path to the normalization file (default: './model/Normalization_RNN-DAS_1150.txt').
+  --files_id FILES_ID                           Path to the text file containing the list of file IDs (default: './files.txt').
+  --data_folder DATA_FOLDER                     Path to the data files folder (default: './data_to_predict').
+  --pre_processing PRE_PROCESSING               Apply pre-processing to the data before running the model (default: True).
+  --dt DT                                       Sampling time in seconds (default: 0.01).
+  --dx DX                                       Sampling spacing in meters (default: 10).
+  --plot_das PLOT_DAS                           Plot DAS data before running the model (default: False).
+  --plot_das_bi PLOT_DAS_BI                     Plot DAS data with the grammar-based predictions (default: True).
+  --plot_das_grammar PLOT_DAS_GRAMMAR           Plot grammar-based vs raw DAS predictions (default: False).
+  --plot_stream_stack PLOT_STREAM_STACK         Plot stacked stream traces (default: False).
+  --plot_threshold PLOT_THRESHOLD               Threshold for predominant probability class per frame (default: 2/3).
+  --plot_channel PLOT_CHANNEL                   DAS channel to plot (default: 50).
+  --grammar GRAMMAR                             Enable grammar-based event detection (default: True).
+  --predictions_saved PREDICTIONS_SAVED         Save model predictions (default: False).
+  --probabilities_saved PROBABILITIES_SAVED     Save prediction probabilities (default: False).
+  --save_results_csv SAVE_RESULTS_CSV           Save results in CSV format (default: True).
+  --save_results_mseed SAVE_RESULTS_MSEED       Save waveform results in MiniSEED format (default: True).
+  --grammar_save GRAMMAR_SAVE                   Save grammar results (default: True).
+  --grammar_parameters_threshold
+    GRAMMAR_PARAMETERS_THRESHOLD                Threshold for grammar-based event detection (default: 2/3).
+  --grammar_parameter_threshold_channels
+    GRAMMAR_PARAMETER_THRESHOLD_CHANNELS        Channel-based grammar threshold (default: 0.5).
+  --grammar_parameter_interval_size
+    GRAMMAR_PARAMETER_INTERVAL_SIZE             Interval size for grammar-based analysis (default: 10).
+  --grammar_parameter_trigger_on
+    GRAMMAR_PARAMETER_TRIGGER_ON                Trigger-on threshold for grammar-based detection (default: 0.9).
+  --grammar_parameter_trigger_off
+    GRAMMAR_PARAMETER_TRIGGER_OFF               Trigger-off threshold for grammar-based detection (default: 0.05).
+  --threshold_mseed THRESHOLD_MSEED             Threshold for trace detection (default: 0.9).
+  --network_code NETWORK_CODE                   Network code (default: 'LP').
+  --station_prefix STATION_PREFIX               Station prefix (default: 'DAS').
+  --location_code LOCATION_CODE                 Location code (default: 'XX').
+
+
 ```
 
 Maintaining the folder structure provided in the repository is recommended to ensure proper functionality, although it is possible to modify it by changing the argparse parameters.
