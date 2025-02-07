@@ -119,13 +119,13 @@ By default, the model saves results in both CSV and MiniSEED (MSEED) formats.
 ##### CSV Output
 The CSV file contains event detections with the following structure:
 
-```
-channel_index  event_index  event_time  event_score  coda_index  coda_time  windows
-0           7200        1970-01-01T00:01:12  1.000        9120       1970-01-01T00:01:31.200000  [15, 16, 17, 18]
-0          10080        1970-01-01T00:01:40  0.741        10560      1970-01-01T00:01:45.600000  [21]
-1           7200        1970-01-01T00:01:12  0.938        10560      1970-01-01T00:01:45.600000  [15, 16, 17, 18, 19, 20, 21]
-...
-```
+| channel_index | event_index | event_time           | event_score | coda_index | coda_time             | windows                      |
+|--------------|------------|----------------------|-------------|-----------|-----------------------|------------------------------|
+| 0            | 7200       | 1970-01-01T00:01:12  | 1.000       | 9120      | 1970-01-01T00:01:31.2 | [15, 16, 17, 18]            |
+| 0            | 10080      | 1970-01-01T00:01:40  | 0.741       | 10560     | 1970-01-01T00:01:45.6 | [21]                         |
+| 1            | 7200       | 1970-01-01T00:01:12  | 0.938       | 10560     | 1970-01-01T00:01:45.6 | [15, 16, 17, 18, 19, 20, 21] |
+| ...          | ...        | ...                  | ...         | ...       | ...                   | ...                          |
+
 
 - `channel_index`: DAS channel where an event was detected.
 - `event_index`: Sample index where the event starts.
