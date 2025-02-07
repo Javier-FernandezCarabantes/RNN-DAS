@@ -31,14 +31,14 @@ def parse_arguments():
     # Model and normalization paths
     parser.add_argument("--model_path", type=str, default="./model/RNN-DAS_1150", 
                         help="Path to the trained RNN-DAS model.")
-    parser.add_argument("--data_folder", type=str, default="./data_to_predict",
-                        help="Path to the folder containing the data to predict.")
+    parser.add_argument("--normalization_path", type=str, default="./model/Normalization_RNN-DAS_1150.txt",
+                        help="Path to the normalization file.")
     
     # Input files
     parser.add_argument("--files_id", type=str, default="./files.txt",
                         help="Path to the text file containing the list of file IDs.")
-    parser.add_argument("--files_id", type=str, default="./data_to_predict/files.txt",
-                    help="Path to the text file containing the list of file IDs.")
+    parser.add_argument("--data_folder", type=str, default="./data_to_predict",
+                    help="Path to the data files folder.")
 
     # Pre-processing
     parser.add_argument("--pre_processing", type=bool, default=True,
