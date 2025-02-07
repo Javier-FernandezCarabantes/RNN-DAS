@@ -153,7 +153,7 @@ Each trace includes:
 - The time interval containing the waveform of the detected event.
 - The sampling rate and number of samples.
 
-Example:
+For instance, for a single DAS channel, the waveform of an event detected by RNN-DAS appears as follows:
 
 ![Trace_example](./trace_example.png)
 
