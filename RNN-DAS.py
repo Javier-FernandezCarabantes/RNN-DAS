@@ -27,79 +27,79 @@ def parse_arguments():
         argparse.Namespace: Parsed arguments.
     """
     parser = argparse.ArgumentParser(description="Run the RNN-DAS model with specified configurations.")
-    
+
     # Model and normalization paths
-    parser.add_argument("--model_path", type=str, default="./model/RNN-DAS_1150", 
-                        help="Path to the trained RNN-DAS model.")
+    parser.add_argument("--model_path", type=str, default="./model/RNN-DAS_1150",
+                        help="Path to the trained RNN-DAS model (default: './model/RNN-DAS_1150').")
     parser.add_argument("--normalization_path", type=str, default="./model/Normalization_RNN-DAS_1150.txt",
-                        help="Path to the normalization file.")
-    
+                        help="Path to the normalization file (default: './model/Normalization_RNN-DAS_1150.txt').")
+
     # Input files
     parser.add_argument("--files_id", type=str, default="./files.txt",
-                        help="Path to the text file containing the list of file IDs.")
+                        help="Path to the text file containing the list of file IDs (default: './files.txt').")
     parser.add_argument("--data_folder", type=str, default="./data_to_predict",
-                    help="Path to the data files folder.")
+                        help="Path to the data files folder (default: './data_to_predict').")
 
     # Pre-processing
     parser.add_argument("--pre_processing", type=bool, default=True,
-                        help="Apply pre-processing to the data before running the model (recommended).")
-
+                        help="Apply pre-processing to the data before running the model (default: True).")
     parser.add_argument("--dt", type=float, default=0.01,
-                        help="Sampling time (in seconds)")
+                        help="Sampling time in seconds (default: 0.01).")
     parser.add_argument("--dx", type=float, default=10,
-                        help="Sampling spacing (in meters)")
+                        help="Sampling spacing in meters (default: 10).")
+
     # Plot options
     parser.add_argument("--plot_das", type=bool, default=False,
-                        help="Plot DAS data before running the model.")
+                        help="Plot DAS data before running the model (default: False).")
     parser.add_argument("--plot_das_bi", type=bool, default=True,
-                        help="Plot DAS data with the grammar-based predictions.")
+                        help="Plot DAS data with the grammar-based predictions (default: True).")
     parser.add_argument("--plot_das_grammar", type=bool, default=False,
-                        help="Plot grammar-based vs raw DAS predictions.")
+                        help="Plot grammar-based vs raw DAS predictions (default: False).")
     parser.add_argument("--plot_stream_stack", type=bool, default=False,
-                        help="Plot stacked stream traces.")
+                        help="Plot stacked stream traces (default: False).")
     parser.add_argument("--plot_threshold", type=float, default=2/3,
-                        help="Threshold value to consider a predominant probability class per frame when plotting.")
+                        help="Threshold for predominant probability class per frame (default: 2/3).")
     parser.add_argument("--plot_channel", type=int, default=50,
-                       help="DAS channel to plot in the straingram and spectrogram subplots.")
-    
+                        help="DAS channel to plot (default: 50).")
+
     # Grammar processing
     parser.add_argument("--grammar", type=bool, default=True,
-                        help="Enable grammar-based event detection.")
-    
+                        help="Enable grammar-based event detection (default: True).")
+
     # Saving options
     parser.add_argument("--predictions_saved", type=bool, default=False,
-                        help="Save model predictions.")
+                        help="Save model predictions (default: False).")
     parser.add_argument("--probabilities_saved", type=bool, default=False,
-                        help="Save prediction probabilities.")
+                        help="Save prediction probabilities (default: False).")
     parser.add_argument("--save_results_csv", type=bool, default=True,
-                        help="Save results in CSV format.")
+                        help="Save results in CSV format (default: True).")
     parser.add_argument("--save_results_mseed", type=bool, default=True,
-                        help="Save waveform results in MiniSEED format.")
+                        help="Save waveform results in MiniSEED format (default: True).")
     parser.add_argument("--grammar_save", type=bool, default=True,
-                        help="Save grammar results.")
+                        help="Save grammar results (default: True).")
 
     # Grammar parameters
     parser.add_argument("--grammar_parameters_threshold", type=float, default=2/3,
-                        help="Threshold for grammar-based event detection.")
+                        help="Threshold for grammar-based event detection (default: 2/3).")
     parser.add_argument("--grammar_parameter_threshold_channels", type=float, default=0.5,
-                        help="Channel-based grammar threshold.")
+                        help="Channel-based grammar threshold (default: 0.5).")
     parser.add_argument("--grammar_parameter_interval_size", type=int, default=10,
-                        help="Interval size for grammar-based analysis.")
+                        help="Interval size for grammar-based analysis (default: 10).")
     parser.add_argument("--grammar_parameter_trigger_on", type=float, default=0.9,
-                        help="Trigger-on threshold for grammar-based detection.")
+                        help="Trigger-on threshold for grammar-based detection (default: 0.9).")
     parser.add_argument("--grammar_parameter_trigger_off", type=float, default=0.05,
-                        help="Trigger-off threshold for grammar-based detection.")
-    
+                        help="Trigger-off threshold for grammar-based detection (default: 0.05).")
+
     # MSEED parameters
-    parser.add_argument("--threshold_mseed", type=float, default=0.9, 
-                        help="Threshold for trace detection")
-    parser.add_argument("--network_code", type=str, default="LP", 
-                        help="Network code (default: 'LP')")
-    parser.add_argument("--station_prefix", type=str, default="DAS", 
-                        help="Station prefix (default: 'DAS')")
-    parser.add_argument("--location_code", type=str, default="XX", 
-                        help="Location code (default: 'XX')")
-    
+    parser.add_argument("--threshold_mseed", type=float, default=0.9,
+                        help="Threshold for trace detection (default: 0.9).")
+    parser.add_argument("--network_code", type=str, default="LP",
+                        help="Network code (default: 'LP').")
+    parser.add_argument("--station_prefix", type=str, default="DAS",
+                        help="Station prefix (default: 'DAS').")
+    parser.add_argument("--location_code", type=str, default="XX",
+                        help="Location code (default: 'XX').")
+
     return parser.parse_args()
 
 
