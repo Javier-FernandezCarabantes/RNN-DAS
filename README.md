@@ -63,7 +63,7 @@ conda activate RNN_DAS
 
 ## Running the Model
 
-The model is designed to read data in HDF5 format with the following structure:
+The model is designed to process data from text files listing event IDs, which correspond to the HDF5 files containing the DAS data. The expected structure of the HDF5 files is:
 
 ```
 file_path
@@ -85,7 +85,7 @@ file_path
 - `dx_m`: The spatial sampling in meters (m) between channels.
 - `begin_time`: The start date in the format `'1970-01-01T00:00:00.000'`.
 
-To run the model, use a `file_list.txt` that contains the names (event IDs) of all the HDF5 files to be processed by the model. This file should list each event ID on a new line, for example:
+To run the model, you must provide a `files_id.txt` file, which lists the event IDs corresponding to the HDF5 files to be processed. This file should contain one event ID per line:
 
 ```
 event_id_1
@@ -94,26 +94,67 @@ event_id_3
 ...
 ```
 
-This list will be used by the model to iterate through and process each file.
+The default location for this file is the `data_to_predict/` folder, but this can be modified with command-line arguments.
 
 ### Command-Line Execution
 
-
-To run the model using command-line arguments, use the provided script with `argparse`. The script allows users to specify input parameters such as the dataset location, model configuration, and output options.
-
-Example usage:
+To execute the model, use the following command:
 
 ```bash
-python run_model.py --input_data data/example_signal.mseed --output results/predictions.txt --model_checkpoint models/rnn_das_checkpoint.pth
+python RNN_DAS.py --files_id files_id.txt
 ```
 
-For more details on available arguments, run:
+Where `files_id.txt` is the required text file containing the list of event IDs. By default, this file should be located in the `data_to_predict` folder.
+
+To customize additional parameters, use:
 
 ```bash
-python run_model.py --help
+python RNN_DAS.py --help
 ```
+
+Maintaining the folder structure provided in the repository is recommended to ensure proper functionality.
+
+### Saving Results
+
+By default, the model saves results in both CSV and MiniSEED (MSEED) formats.
+
+#### CSV Output
+The CSV file contains event detections with the following structure:
+
+```
+channel_index  event_index  event_time  event_score  coda_index  coda_time  windows
+0              0           7200        1970-01-01T00:01:12  1.000        9120       1970-01-01T00:01:31.200000  [15, 16, 17, 18]
+1              0          10080        1970-01-01T00:01:40.800000  0.741        10560      1970-01-01T00:01:45.600000  [21]
+2              1           7200        1970-01-01T00:01:12  0.938        10560      1970-01-01T00:01:45.600000  [15, 16, 17, 18, 19, 20, 21]
+...
+```
+
+- `channel_index`: DAS channel where an event was detected.
+- `event_index`: Sample index where the event starts.
+- `event_time`: Timestamp of event start.
+- `event_score`: Probability or confidence measure associated with the detection.
+- `coda_index`: Sample index where the event ends.
+- `coda_time`: Timestamp of event end.
+- `windows`: Temporal windows selected by the model as events.
+
+#### MiniSEED (MSEED) Output
+The MiniSEED files store detected event waveforms. Each trace corresponds to a detected event with a probability threshold (default: 0.9). Example:
+
+```
+LP.DAS_0.XX.0000 | 1970-01-01T00:01:12.000000Z - 1970-01-01T00:01:31.190000Z | 100.0 Hz, 1920 samples
+...
+(76 other traces)
+...
+LP.DAS_96.XX.0096 | 1970-01-01T00:01:12.000000Z - 1970-01-01T00:01:50.390000Z | 100.0 Hz, 3840 samples
+```
+
+Each trace includes:
+- The corresponding DAS channel.
+- The time interval containing the waveform of the detected event.
+- The sampling rate and number of samples.
 
 ### Example Notebook: Running RNN-DAS on La Palma Data
+
 An example Jupyter Notebook is provided to demonstrate how the model operates on real data from the 2021 La Palma eruption. This notebook walks through loading the DAS dataset, preprocessing signals, and running the trained model on a sample 3-minute VT event with a magnitude of Ml=4.04. The provided test data corresponds only to the first 100 channels of the DAS array due to repository size limitations. 
 To explore the example, open the notebook:
 
@@ -121,9 +162,11 @@ To explore the example, open the notebook:
 jupyter notebook examples/RNN-DAS_LaPalma.ipynb
 ```
 
-To apply the model to the full dataset in the Jupyter Notebook, simply download the data from https://drive.google.com/drive/folders/14WtA6HrQX0GVHJKBOkrGRWHS6EuOw1uo?usp=sharing and use it within the notebook.  
+To apply the model to the full dataset in the Jupyter Notebook, download the data from:
 
+[Google Drive Link](https://drive.google.com/drive/folders/14WtA6HrQX0GVHJKBOkrGRWHS6EuOw1uo?usp=sharing)
 
+and use it within the notebook.
 
 
 ## Citation
