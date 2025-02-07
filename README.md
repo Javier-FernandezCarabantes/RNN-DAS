@@ -5,14 +5,6 @@ RNN-DAS is an innovative Deep Learning model based on Recurrent Neural Networks 
 
 RNN-DAS is capable of detecting VT events, analyzing their temporal evolution, and classifying their waveforms with approximately 97% accuracy. The model has demonstrated excellent generalization capabilities for different time intervals and volcanoes, facilitating continuous, real-time seismic monitoring with minimal computational resources and retraining requirements.
 
-This software was developed as part of the DigiVolCan project - A digital infrastructure for forecasting volcanic eruptions in the Canary Islands.
-The results from the RNN-DAS model are the outcome of collaboration between the University of Granada, the Canary Islands Volcanological Institute (INVOLCAN), the Institute of Technological and Renewable Energies (ITER), the University of La Laguna, and Aragón Photonics.
-
-![Project Screenshot](./logo.png)
-
-The project was funded by the Ministry of Science, Innovation, and Universities / State Research Agency (MICIU/AEI) of Spain, and the European Union through the Recovery, Transformation, and Resilience Plan, Next Generation EU Funds.
-Project: PLEC2022-009271 funded by MICIU/AEI /10.13039/501100011033 and by the European Union Next GenerationEU/ PRTR.
-
 ## Features
 - Detection and classification of volcano-seismic events from DAS data.
 - Utilizes frequency-based signal energy features to enhance spatial and temporal contextual information.
@@ -182,4 +174,14 @@ If you use this model or any part of this repository, please cite the correspond
 This repository and its contents are subject to the same terms and conditions as specified in the accompanying publication. Future updates may refine the model or add new functionalities.
 
 For inquiries or contributions, feel free to open an issue or submit a pull request.
+
+## Acknowledgments
+
+This software was developed as part of the DigiVolCan project - A digital infrastructure for forecasting volcanic eruptions in the Canary Islands.
+The results from the RNN-DAS model are the outcome of collaboration between the University of Granada, the Canary Islands Volcanological Institute (INVOLCAN), the Institute of Technological and Renewable Energies (ITER), the University of La Laguna, and Aragón Photonics.
+
+![Project Screenshot](./logo.png)
+
+The project was funded by the Ministry of Science, Innovation, and Universities / State Research Agency (MICIU/AEI) of Spain, and the European Union through the Recovery, Transformation, and Resilience Plan, Next Generation EU Funds.
+Project: PLEC2022-009271 funded by MICIU/AEI /10.13039/501100011033 and by the European Union Next GenerationEU/ PRTR.
 
