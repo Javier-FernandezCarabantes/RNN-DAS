@@ -3,7 +3,7 @@
 ## Overview
 RNN-DAS is an innovative Deep Learning model based on Recurrent Neural Networks (RNNs) with Long Short-Term Memory (LSTM) cells, developed for real-time Volcano-Seismic Signal Recognition (VSR) using Distributed Acoustic Sensing (DAS) measurements. The model was trained on a comprehensive dataset of Volcano-Tectonic (VT) events from the 2021 La Palma eruption, recorded by a High-fidelity submarine Distributed Acoustic Sensing array (HDAS) located near the eruption site.
 
-RNN-DAS is capable of detecting VT events, analyzing their temporal evolution, and classifying their waveforms with approximately 97% accuracy. The model has demonstrated excellent generalization capabilities for different time intervals and volcanoes, facilitating continuous, real-time seismic monitoring with minimal computational resources and retraining requirements.
+RNN-DAS can detect VT events, track their temporal evolution, and classify their waveforms with approximately 97% accuracy when tested on a database of over 2 million unique strain waveforms, enabling real-time continuous data predictions. The model has demonstrated excellent generalization capabilities for different time intervals and volcanoes, facilitating continuous, real-time seismic monitoring with minimal computational resources and retraining requirements.
 
 ## Features
 - Detection and classification of volcano-seismic events from DAS data.
