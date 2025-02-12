@@ -77,7 +77,7 @@ file_path
 - `dx_m`: The spatial sampling in meters (m) between channels.
 - `begin_time`: The start date in the format `'1970-01-01T00:00:00.000'`.
 
-To run the model, you must provide a `files_id.txt` file, which lists the event IDs corresponding to the HDF5 files to be processed. This file should contain one event ID per line:
+To run the model, you must provide a `files.txt` file, which lists the event IDs corresponding to the HDF5 files to be processed. This file should contain one event ID per line:
 
 ```
 event_id_1
@@ -91,10 +91,10 @@ event_id_3
 To execute the model, use the following command:
 
 ```bash
-python RNN-DAS.py --files_id files_id.txt
+python RNN-DAS.py --files_id files.txt
 ```
 
-Where `files_id.txt` is the required text file containing the list of event IDs. By default, the data `.h5` files should be located in the `data_to_predict` folder.
+Where `files.txt` is the required text file containing the list of event IDs. By default, the data `.h5` files should be located in the `data_to_predict` folder.
 
 To customize additional parameters, use:
 
