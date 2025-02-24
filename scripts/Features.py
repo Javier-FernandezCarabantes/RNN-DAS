@@ -5,7 +5,6 @@ from python_speech_features import logfbank, delta
 from torch.utils.data import DataLoader, TensorDataset
 from joblib import Parallel, delayed
 
-
 def split_channels_features(n_channels, num_processes):
     """
     Divides the number of channels into groups based on the number of available processes.
@@ -18,24 +17,88 @@ def split_channels_features(n_channels, num_processes):
         groups.append((start, end))
     return groups
 
-def create_features(H, window_duration, overlap_duration, mean, std):
+
+
+def create_features(H, window_duration, overlap_duration, mean, std, num_processes):
     """
     Creates features using parallel computation for multiple channels simultaneously.
     """
-    n, m = H.shape
-    num_processes = os.cpu_count()  # Number of available CPU cores
-    channel_groups = split_channels_features(n, num_processes)
+    n, m = H.shape 
+    channel_groups = split_channels_features(n, num_processes)  # Number of available CPU cores
+
+    # Compute all LFB, LFB' and LFB'' features for all channels in parallel
+    print(">> Computing energy coefficients...")
+    lfb_results = Parallel(n_jobs=num_processes)(
+        delayed(calculate_all_LFB)(H, 100, window_duration, overlap_duration, sp)
+        for sp in range(n)
+    )
 
     # Process all channel groups simultaneously
     print(">> Computing features...")
-    results = Parallel(n_jobs=num_processes)( 
-        delayed(process_channel_group_features)(H, 100, window_duration, overlap_duration, start, end, mean, std) 
+    results = Parallel(n_jobs=num_processes)(
+        delayed(process_channel_group_features)(lfb_results, start, end, mean, std)
         for start, end in channel_groups
     )
     results = [res.numpy() for res in results]
     # Concatenate the results from all processes
     features = np.concatenate(results, axis=0)
     #print(features.shape) #[batch, time_step, features]
+    return features
+
+def calculate_all_LFB(H, srate, window_duration, overlap_duration, sp):
+    """
+    Calculate LFB, LFB' and LFB'' features for a specific channel.
+    """
+    lfb, lfb_delta, lfb_delta_delta = calculate_LFB(
+        da=H, srate=srate, nsamp=H.shape[1], sp=sp, window_duration=window_duration, overlap_duration=overlap_duration
+    )
+    return lfb.T, lfb_delta.T, lfb_delta_delta.T
+
+def process_channel_group_features(lfb_results, start, end, mean, std):
+    """
+    Processes a group of channels and returns the features.
+    
+    Parameters:
+    - lfb_results: List of LFB features for all channels
+    - start: Index of the first channel to process
+    - end: Index of the last channel to process (exclusive)
+    - mean: Mean tensor for normalization
+    - std: Standard deviation tensor for normalization
+
+    Returns:
+    - features: Tensor with the features (core, time_step, features)
+    """
+    features = []
+
+    # Ensure mean and std are in tensor format
+    mean = mean.clone().detach() if isinstance(mean, torch.Tensor) else torch.tensor(mean, dtype=torch.float32)
+    std = std.clone().detach() if isinstance(std, torch.Tensor) else torch.tensor(std, dtype=torch.float32)
+    mean = mean.unsqueeze(dim=0)  # [1, 144] to avoid issues with normalization
+    std = std.unsqueeze(dim=0)  # [1, 144]
+
+    for sp in range(start, end):
+        # Process the previous, current, and next channels
+        lfb_previous, lfb_delta_previous, lfb_delta_delta_previous = lfb_results[sp-1] if sp > 0 else lfb_results[0]
+        lfb_current, lfb_delta_current, lfb_delta_delta_current = lfb_results[sp]
+        lfb_next, lfb_delta_next, lfb_delta_delta_next = lfb_results[sp+1] if sp < len(lfb_results)-1 else lfb_results[-1]
+
+        # Concatenate features (previous, current, next)
+        feature = np.concatenate((
+            lfb_previous, lfb_delta_previous, lfb_delta_delta_previous,
+            lfb_current, lfb_delta_current, lfb_delta_delta_current,
+            lfb_next, lfb_delta_next, lfb_delta_delta_next
+        ), axis=1)
+        #print(feature.shape)
+        # Normalize the features
+        feature = torch.tensor(feature, dtype=torch.float32)
+        feature = (feature - mean) / std
+
+        # Store the features for the channel
+        features.append(feature)
+
+    # Convert the list of tensors into a single tensor
+    features = torch.stack(features)  # Dimensions: [core, time_step, features]
+
     return features
 
 
@@ -94,81 +157,6 @@ def calculate_LFB(da, srate, nsamp, sp, window_duration=6, overlap_duration=1.2,
     return LFB_matrix_vals, deltas_LFB, deltas_deltas_LFB
 
 
-def process_channel_group_features(H, srate, window_duration, overlap_duration, start, end, mean, std):
-    """
-    Processes a group of channels and returns the features.
-    
-    Parameters:
-    - H: Data matrix (2D, [n_channels, n_samples])
-    - srate: Sampling rate (Hz)
-    - stime: Initial time (datetime.datetime)
-    - dt: Temporal resolution between samples (seconds)
-    - window_duration: Duration of each window (seconds)
-    - overlap_duration: Duration of overlap between windows (seconds)
-    - start: Index of the first channel to process
-    - end: Index of the last channel to process (exclusive)
-    - mean: Mean tensor for normalization
-    - std: Standard deviation tensor for normalization
-
-    Returns:
-    - features: Tensor with the features (core, time_step, features)
-    """
-    features = []
-
-    # Ensure mean and std are in tensor format
-    mean = mean.clone().detach() if isinstance(mean, torch.Tensor) else torch.tensor(mean, dtype=torch.float32)
-    std = std.clone().detach() if isinstance(std, torch.Tensor) else torch.tensor(std, dtype=torch.float32)
-    mean = mean.unsqueeze(dim=0)  # [1, 144] to avoid issues with normalization
-    std = std.unsqueeze(dim=0)  # [1, 144]
-    # print(std, mean)
-    n, m = H.shape  # Data dimensions: n_channels x n_samples
-
-    for sp in range(start, end):
-        #print(sp)
-        # Process the previous channel (if it's not the first channel)
-        if sp == 0:
-            lfb_previous, lfb_delta_previous, lfb_delta_delta_previous = calculate_LFB(
-                da=H, srate=srate, nsamp=m, sp=sp, window_duration=window_duration, overlap_duration=overlap_duration
-            ) 
-        else:
-            lfb_previous, lfb_delta_previous, lfb_delta_delta_previous = calculate_LFB(
-                da=H, srate=srate, nsamp=m, sp=sp-1, window_duration=window_duration, overlap_duration=overlap_duration
-            )
-
-        # Process the current channel
-        lfb_current, lfb_delta_current, lfb_delta_delta_current = calculate_LFB(
-            da=H, srate=srate, nsamp=m, sp=sp, window_duration=window_duration, overlap_duration=overlap_duration
-        )
-
-        # Process the next channel (if it's not the last channel)
-        if sp == n - 1:
-            lfb_next, lfb_delta_next, lfb_delta_delta_next = calculate_LFB(
-                da=H, srate=srate, nsamp=m, sp=sp, window_duration=window_duration, overlap_duration=overlap_duration
-            )
-        else:
-            lfb_next, lfb_delta_next, lfb_delta_delta_next = calculate_LFB(
-                da=H, srate=srate, nsamp=m, sp=sp+1, window_duration=window_duration, overlap_duration=overlap_duration
-            )
-
-        # Concatenate features (previous, current, next)
-        feature = np.concatenate((
-            lfb_previous.T, lfb_delta_previous.T, lfb_delta_delta_previous.T,
-            lfb_current.T, lfb_delta_current.T, lfb_delta_delta_current.T,
-            lfb_next.T, lfb_delta_next.T, lfb_delta_delta_next.T
-        ), axis=1)
-        #print(feature.shape)
-        # Normalize the features
-        feature = torch.tensor(feature, dtype=torch.float32)
-        feature = (feature - mean) / std
-
-        # Store the features for the channel
-        features.append(feature)
-
-    # Convert the list of tensors into a single tensor
-    features = torch.stack(features)  # Dimensions: [core, time_step, features]
-
-    return features
-
 def create_prediction_dataloader(data, batch_size=256):
     tensor_data = torch.tensor(data, dtype=torch.float32) 
     dataset = TensorDataset(tensor_data)
@@ -203,20 +191,21 @@ def read_mean_std_from_text(file_path):
     return mean, std
 
 
-def features(data, filepath):
+def features(data, filepath, num_processes):
     """
     Function to execute the RNN-DAS model with the provided data.
     
     Args:
         data: The input data to be processed.
         filepath: The path of the mean/std values file to normalize.
+        num_processes: The number of cpu cores to be employed in parallelization
     
     Returns:
         normalized_dataloader: normalized features of the DAS data.
     """
     
     mean, std = read_mean_std_from_text(filepath)
-    features=create_features(data, 6, 1.2, mean, std)
+    features=create_features(data, 6, 1.2, mean, std, num_processes)
     dataloader = create_prediction_dataloader(features)
     print("Done")
     return dataloader
