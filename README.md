@@ -96,6 +96,8 @@ python RNN-DAS.py --files_id files.txt
 
 Where `files.txt` is the required text file containing the list of event IDs. By default, the data `.h5` files should be located in the `data_to_predict` folder.
 
+The code is designed to implement parallelization to accelerate the computation of signal features. This configuration can be adjusted based on the available hardware. By default, the process utilizes one-third of the total CPU cores, but this parameter should be modified with caution to prevent system overload. Increasing the number of cores reduces computation time.  
+
 To customize additional parameters, use:
 
 ```bash
@@ -104,6 +106,7 @@ usage: RNN-DAS.py [-h] [--model_path MODEL_PATH]
                   [--normalization_path NORMALIZATION_PATH]
                   [--files_id FILES_ID] [--data_folder DATA_FOLDER]
                   [--pre_processing PRE_PROCESSING] [--dt DT] [--dx DX]
+                  [--n_cpu N_CPU]
                   [--plot_das PLOT_DAS] [--plot_das_bi PLOT_DAS_BI]
                   [--plot_das_grammar PLOT_DAS_GRAMMAR]
                   [--plot_stream_stack PLOT_STREAM_STACK]
@@ -135,6 +138,7 @@ optional arguments:
   --pre_processing PRE_PROCESSING               Apply pre-processing to the data before running the model (default: True).
   --dt DT                                       Sampling time in seconds (default: 0.01).
   --dx DX                                       Sampling spacing in meters (default: 10).
+  --n_cpu N_CPU                                 Number of cpu cores to be used for parallelization, modify this parameter with caution (default: os.cpu_count()/3)
   --plot_das PLOT_DAS                           Plot DAS data before running the model (default: False).
   --plot_das_bi PLOT_DAS_BI                     Plot DAS data with the grammar-based predictions (default: True).
   --plot_das_grammar PLOT_DAS_GRAMMAR           Plot grammar-based vs raw DAS predictions (default: False).
