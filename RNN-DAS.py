@@ -19,7 +19,6 @@ from picks import write_pickle, detect_phases
 from picks import extract_events_to_mseed
 import argparse
 
-
 def parse_arguments():
     """
     Parses command-line arguments for running the RNN-DAS model.
@@ -48,6 +47,10 @@ def parse_arguments():
                         help="Sampling time in seconds (default: 0.01).")
     parser.add_argument("--dx", type=float, default=10,
                         help="Sampling spacing in meters (default: 10).")
+
+    # Number of cpu cores used
+    parser.add_argument("--n_cpu", type=int, default=os.cpu_count()/3,
+                        help="Number of cpu cores to be used for parallelization, modify this parameter with caution (default: os.cpu_count()/3)") 
 
     # Plot options
     parser.add_argument("--plot_das", type=bool, default=False,
@@ -143,7 +146,7 @@ if __name__ == "__main__":
             print("Plotting the DAS record...")
             plot_das_argparse(data=H, event_id=fileid, channel_idx=args.plot_channel, fsamp=1/dt)
         # Computing the features of the data
-        features_dataloader=features(H[:, :], filepath_normalization) # normalization values
+        features_dataloader=features(H[:, :], filepath_normalization, int(args.n_cpu))  # normalization values
         # Making the predictions and raw probabilities
         predictions, probabilities = run_model(model_RNN_DAS, features_dataloader)
         #Saving the predictions or raw probabilities?
