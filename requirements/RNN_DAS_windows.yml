@@ -66,4 +66,3 @@ dependencies:
       - pytz==2025.1
       - torchvision==0.3.0
       - obspy==1.2.2  
-prefix: /home/estudiantesdas/miniconda3/envs/RNN_DAS
