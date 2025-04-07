@@ -237,9 +237,8 @@ To carry out the retraining of the model and better adapt it to the characterist
 
 You can reach the corresponding author (Javier Fernández-Carabantes) at: **javierfyc@ugr.es**  
 **Institution:** 
-
 Departamento de Física Teórica y del Cosmos, Universidad de Granada, Granada, Spain
-Instituto Andaluz de Geofísica, Universidad de Granada, Granada, Spain
+
 
 ## Citation
 If you use this model or any part of this repository, please cite the corresponding article:
