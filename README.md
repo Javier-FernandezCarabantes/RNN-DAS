@@ -236,7 +236,9 @@ and use it within the notebook.
 To carry out the retraining of the model and better adapt it to the characteristics of volcanic seismicity from a different volcanic environment, it is encouraged to contact the corresponding author for guidance and support. 
 
 You can reach the corresponding author (Javier Fernández-Carabantes) at: **javierfyc@ugr.es**  
-**Institution:** Departamento de Física Teórica y del Cosmos, Universidad de Granada, Granada, Spain
+**Institution:** 
+Departamento de Física Teórica y del Cosmos, Universidad de Granada, Granada, Spain
+
 Instituto Andaluz de Geofísica, Universidad de Granada, Granada, Spain
 
 ## Citation
