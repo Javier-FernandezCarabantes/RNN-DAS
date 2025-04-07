@@ -241,7 +241,7 @@ You can reach the corresponding author (Javier Fernández-Carabantes) at: **javi
 ## Citation
 If you use this model or any part of this repository, please cite the corresponding article:
 
-> [RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing](URL_to_the_article)
+> [RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing]([preprint arXiv:2503.11622](https://arxiv.org/abs/2503.11622))
 
 ## License
 This repository and its contents are subject to the same terms and conditions as specified in the accompanying publication. Future updates may refine the model or add new functionalities.
