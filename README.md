@@ -241,7 +241,7 @@ Departamento de Física Teórica y del Cosmos, Universidad de Granada, Granada, 
 
 
 ## Citation
-If you use this model or any part of this repository, please cite the corresponding article:
+If you use this model or any part of this repository, please cite the corresponding preprint:
 
 > [RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing]([preprint arXiv:2503.11622](https://arxiv.org/abs/2503.11622))
 
