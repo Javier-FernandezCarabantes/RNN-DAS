@@ -41,10 +41,7 @@ def detect_phases(output_csv_name, start_date, probabilities, fsamp=100, probabi
     num_channels, num_windows, num_classes = probabilities.shape
     predictions = np.argmax(probabilities, axis=2)
     results = []
-    if '.' in start_date:
-        start_date = datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S.%f")
-    else:
-        start_date = datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S")
+    start_date = datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S.%f")
     for channel_index in range(num_channels):
         current_window = 0
         last_event_end = -float('inf')  # Index of the end of the last detected event for the channel
@@ -156,9 +153,7 @@ def extract_events_to_mseed(H, df, fsamp, threshold=0.9, output_file="event_data
             trace.stats.starttime = row["event_time"]  # Start time of the event
 
             stream.append(trace)
-    if len(stream) == 0:
-        print("Stream is empty. No events to save.")
-        return None 
+
     # Save all traces in a single MiniSEED file
     folder_path = "RNN-DAS_waveforms"
     os.makedirs(folder_path, exist_ok=True) 

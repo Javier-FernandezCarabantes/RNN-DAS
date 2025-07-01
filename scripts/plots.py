@@ -112,8 +112,8 @@ def plot_das_bi(data, probabilities, window_duration=6, overlap_duration=1.2, th
             aspect='auto',
             extent=[0, time_steps / fsamp, frequencies[-1], frequencies[0]], 
             interpolation='none',
-            vmin=-100,
-            vmax=0
+            vmin=-50,
+            vmax=25
         )
         axs[2, j].set_ylim(1, 20)
         axs[2, j].set_yticks([5, 15])
@@ -252,8 +252,8 @@ def plot_das_grammar(data, probabilities, probabilities_grammar, threshold=2/3, 
             aspect='auto',
             extent=[0, time_steps / fsamp, frequencies[-1], frequencies[0]], 
             interpolation='none',
-            vmin=-100,
-            vmax=0
+            vmin=-50,
+            vmax=25
         )
         axs[2, j].set_ylim(1, 20)
         axs[2, j].set_yticks([5, 15])
@@ -419,8 +419,8 @@ def plot_das_argparse(data, event_id='plot', output_folder='./plots', fsamp=100,
         aspect='auto',
         extent=[0, time_steps / fsamp, frequencies[-1], frequencies[0]],
         interpolation='none',
-        vmin=-100,
-        vmax=10
+        vmin=-50,
+        vmax=25
     )
     axs[2].set_ylabel('Frequency\n(Hz)')
     axs[2].set_ylim(1, 20)
@@ -616,8 +616,8 @@ def plot_das_grammar_argparse(data, probabilities, probabilities_grammar, event_
             aspect='auto',
             extent=[0, time_steps / fsamp, frequencies[-1], frequencies[0]], 
             interpolation='none',
-            vmin=-100,
-            vmax=0
+            vmin=-50,
+            vmax=25
         )
         axs[2, j].set_ylim(1, 20)
         axs[2, j].set_yticks([5, 15])
@@ -786,8 +786,8 @@ def plot_das_bi_argparse(data, probabilities, event_id='plot', save_path='./plot
             aspect='auto',
             extent=[0, time_steps / fsamp, frequencies[-1], frequencies[0]], 
             interpolation='none',
-            vmin=-100,
-            vmax=0
+            vmin=-50,
+            vmax=25
         )
         axs[2, j].set_ylim(1, 20)
         axs[2, j].set_yticks([5, 15])
