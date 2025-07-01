@@ -258,7 +258,7 @@ Preprint:
 Fernandez-Carabantes, J., Titos, M., D'Auria, L., Garcia, J., Garcia, L., & Benitez, C. (2025). RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing. arXiv preprint arXiv:2503.11622.
 
 Dataset:
-Fernández Carabantes, J. J., Titos, M., D'Auria, L., García, J., García, L., & Benítez, C. (2025). RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing [Data set]. Zenodo. https://doi.org/10.5281/zenodo.15105596
+Fernandez-Carabantes, J., Titos, M., D'Auria, L., García, J., García, L., & Benítez, C. (2025). RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing [Data set]. Zenodo. https://doi.org/10.5281/zenodo.15105596
 
 The following works were especially helpful in the development of this model.  
 If you find this project useful, please consider also citing them:
