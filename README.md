@@ -218,22 +218,21 @@ For instance, for a single DAS channel, the waveform of an event detected by RNN
 
 ### Example Notebook: Running RNN-DAS on La Palma Data
 
-An example Jupyter Notebook is provided to demonstrate how the model operates on real data from the 2021 La Palma eruption. This notebook walks through loading the DAS dataset, preprocessing signals, and running the trained model on a sample 3-minute VT event with a magnitude of Ml=4.04. The provided test data corresponds only to the first 100 channels of the DAS array due to repository size limitations. 
+An example Jupyter Notebook is provided to demonstrate how the model operates on real data from the 2021 La Palma eruption. This notebook walks through loading the DAS dataset, preprocessing signals, and running the trained model on a sample 3-minute VT event with a magnitude of Ml=4.22. The provided test data corresponds only to the first 100 channels of the DAS array due to repository size limitations. 
 To explore the example, open the notebook:
 
 ```bash
 jupyter notebook examples/RNN-DAS_LaPalma.ipynb
 ```
 
-To test the model on more DAS data, several datasets are available in the Zenodo dedicated repository. You can:
+To test the model on more DAS data, several datasets are available in the dedicated Zenodo repository (https://doi.org/10.5281/zenodo.15105596). You can:
 
 -> Use them directly within the provided Jupyter Notebook (see the example notebook), or
 
 -> Run the model from the command line using the execution script.
 
-All datasets can be accessed through the Zenodo repository: https://doi.org/10.5281/zenodo.15105596.
-
 Download the desired dataset and follow the instructions in the notebook or execute the model via the terminal.
+
 ## Retraining
 
 To carry out the retraining of the model and better adapt it to the characteristics of volcanic seismicity from a different volcanic environment, it is encouraged to contact the corresponding author for guidance and support. 
