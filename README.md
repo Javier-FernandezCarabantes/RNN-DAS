@@ -225,12 +225,15 @@ To explore the example, open the notebook:
 jupyter notebook examples/RNN-DAS_LaPalma.ipynb
 ```
 
-To apply the model to the full dataset in the Jupyter Notebook, download the data from:
+To test the model on more DAS data, several datasets are available in the Zenodo dedicated repository. You can:
 
-[Google Drive Link](https://drive.google.com/drive/folders/14WtA6HrQX0GVHJKBOkrGRWHS6EuOw1uo?usp=sharing)
+-> Use them directly within the provided Jupyter Notebook (see the example notebook), or
 
-and use it within the notebook.
+-> Run the model from the command line using the execution script.
 
+All datasets can be accessed through the Zenodo repository: https://doi.org/10.5281/zenodo.15105596.
+
+Download the desired dataset and follow the instructions in the notebook or execute the model via the terminal.
 ## Retraining
 
 To carry out the retraining of the model and better adapt it to the characteristics of volcanic seismicity from a different volcanic environment, it is encouraged to contact the corresponding author for guidance and support. 
