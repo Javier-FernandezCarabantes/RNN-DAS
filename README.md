@@ -260,6 +260,12 @@ Fernandez-Carabantes, J., Titos, M., D'Auria, L., Garcia, J., Garcia, L., & Beni
 Dataset:
 Fernández Carabantes, J. J., Titos, M., D'Auria, L., García, J., García, L., & Benítez, C. (2025). RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing [Data set]. Zenodo. https://doi.org/10.5281/zenodo.15105596
 
+The following works were especially helpful in the development of this model.  
+If you find this project useful, please consider also citing them:
+
+Titos, M., Bueno, A., García, L., Benítez, M. C., & Ibáñez, J. (2018). Detection and classification of continuous volcano-seismic signals with recurrent neural networks. *IEEE Transactions on Geoscience and Remote Sensing*, **57**(4), 1936–1948.  
+Titos, M., Carthy, J., García, L., Barnie, T., & Benítez, C. (2024). Dilated-RNNs: A deep approach for continuous volcano-seismic events recognition. *IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing*, **17**, 11857–11865. https://doi.org/10.1109/JSTARS.2024.3421921  
+Zhu, W., Biondi, E., Li, J., Yin, J., Ross, Z. E., & Zhan, Z. (2023). Seismic arrival-time picking on distributed acoustic sensing data using semi-supervised learning. *Nature Communications*, **14**(1), 8192. https://doi.org/10.1038/s41467-023-43980-8
 
 ## License
 This repository and its contents are subject to the same terms and conditions as specified in the accompanying publication. Future updates may refine the model or add new functionalities.
