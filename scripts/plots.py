@@ -41,10 +41,10 @@ def plot_das_bi(data, probabilities, window_duration=6, overlap_duration=1.2, th
                              sharex=True, sharey='row')
 
     # Normalize data
-    normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
-    min_max_normalize = lambda x: 2 * (x - np.min(x)) / (np.max(x) - np.min(x)) - 1
-    data_normalized = normalize(data_selected)
-    channel_signal = min_max_normalize(data[channel_idx, :].reshape(1, -1)).flatten()
+    #normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
+    #min_max_normalize = lambda x: 2 * (x - np.min(x)) / (np.max(x) - np.min(x)) - 1
+    data_normalized = data_selected
+    channel_signal = (data[channel_idx, :].reshape(1, -1)).flatten()
 
     # Custom colormap for class labels
     base_colors = [
@@ -70,14 +70,14 @@ def plot_das_bi(data, probabilities, window_duration=6, overlap_duration=1.2, th
     custom_cmap = ListedColormap(filtered_colors)
 
     # Plot 1: Original DAS Data
-    axs[0, 0].imshow(data_normalized, cmap="seismic", vmin=-1, vmax=1, aspect="auto",
+    axs[0, 0].imshow(data_normalized, cmap="seismic", vmin=-50, vmax=50, aspect="auto",
                      extent=[0, time_steps / fsamp, selected_channels[-1], selected_channels[0]],
                      interpolation="none")
-    axs[0, 0].set_ylabel('Spatial channels')
+    axs[0, 0].set_ylabel('DAS channel')
     axs[0, 0].set_title('Original DAS', fontweight='bold')
 
     # Plot 2: RNN-DAS Predictions
-    axs[0, 1].imshow(data_normalized, cmap="seismic", vmin=-1, vmax=1, aspect="auto",
+    axs[0, 1].imshow(data_normalized, cmap="seismic", vmin=-50, vmax=50, aspect="auto",
                      extent=[0, time_steps / fsamp, selected_channels[-1], selected_channels[0]],
                      interpolation="none")
     time_extent = [0, time_steps / fsamp, num_channels, 0]
@@ -99,7 +99,7 @@ def plot_das_bi(data, probabilities, window_duration=6, overlap_duration=1.2, th
 
     # Add color bar for normalized strain rate
     cbar = fig.colorbar(axs[0, 0].images[0], ax=axs[:2, :].ravel().tolist(), orientation='vertical', fraction=0.02, pad=0.02, extend='both')
-    cbar.set_label('Normalized Strain Rate')
+    cbar.set_label('Strain rate \n$(10^{-9} \dot{\epsilon})$')
 
 
     # Compute and plot spectrogram for the third row of subplots
@@ -153,8 +153,8 @@ def plot_das_grammar(data, probabilities, probabilities_grammar, threshold=2/3, 
     """
 
     # Normalize functions
-    normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
-    min_max_normalize = lambda x: 2 * (x - np.min(x)) / (np.max(x) - np.min(x)) - 1
+    #normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
+    #min_max_normalize = lambda x: 2 * (x - np.min(x)) / (np.max(x) - np.min(x)) - 1
     time_step_duration = window_duration - overlap_duration
     # Base colors for visualization
     base_colors = [
@@ -194,8 +194,8 @@ def plot_das_grammar(data, probabilities, probabilities_grammar, threshold=2/3, 
     window_step_duration = window_duration - overlap_duration
 
     # Data normalization
-    data_normalized = normalize(data)
-    mean_signal = min_max_normalize(data_normalized[channel_idx, :])
+    data_normalized = (data)
+    mean_signal = (data_normalized[channel_idx, :])
 
     # Create prediction grids and colormaps
     pred_grid_no_grammar = create_pred_grid(probabilities, selected_channels_length, num_windows, threshold)
@@ -210,13 +210,13 @@ def plot_das_grammar(data, probabilities, probabilities_grammar, threshold=2/3, 
     im1 = axs[0, 0].imshow(
         data_normalized,
         cmap="seismic",
-        vmin=-1,
-        vmax=1,
+        vmin=-50,
+        vmax=50,
         aspect="auto",
         extent=[0, time_steps / fsamp, num_channels, 0],
         interpolation="none",
     )
-    axs[0, 0].set_ylabel('Channels')
+    axs[0, 0].set_ylabel('DAS channel')
     axs[0, 0].set_title("DAS record", fontsize=12, fontweight='bold')
 
     axs[0, 1].imshow(
@@ -318,7 +318,7 @@ def plot_das_grammar(data, probabilities, probabilities_grammar, threshold=2/3, 
 
     # Add colorbars
     cbar1 = fig.colorbar(im1, ax=axs[:2], orientation='vertical', fraction=0.02, pad=0.02, extend='both')
-    cbar1.set_label('Normalized Strain Rate')
+    cbar1.set_label('Strain rate \n$(10^{-9} \dot{\epsilon})$')
 
     cbar2 = fig.colorbar(im2, ax=axs[2], orientation='vertical', fraction=0.02, pad=0.02, aspect=3)
     cbar2.set_label('dB')
@@ -373,17 +373,17 @@ def plot_das_argparse(data, event_id='plot', output_folder='./plots', fsamp=100,
         os.makedirs(output_folder)
 
     # Z-score and min-max normalization functions
-    z_score_normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
-    min_max_normalize = lambda x: 2 * (x - np.min(x, axis=-1, keepdims=True)) / (np.max(x, axis=-1, keepdims=True) - np.min(x, axis=-1, keepdims=True)) - 1
+    #z_score_normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
+    #min_max_normalize = lambda x: 2 * (x - np.min(x, axis=-1, keepdims=True)) / (np.max(x, axis=-1, keepdims=True) - np.min(x, axis=-1, keepdims=True)) - 1
 
     # Data selection
     data_selected = data[:, :]
     num_channels = data_selected.shape[0]
     time_steps = data_selected.shape[1]
 
-    # Normalize data
-    data_selected = z_score_normalize(data_selected)
-    signal = min_max_normalize(data_selected[channel_idx, :])
+    # # Normalize data
+    # data_selected = (data_selected)
+    signal = (data_selected[channel_idx, :])
 
     # Compute the spectrogram
     frequencies, times, Sxx = spectrogram(signal, fs=fsamp, nfft=1024, nperseg=600, noverlap=200)
@@ -399,18 +399,18 @@ def plot_das_argparse(data, event_id='plot', output_folder='./plots', fsamp=100,
     im = axs[0].imshow(
         data_selected,
         cmap="seismic",
-        vmin=-1,
-        vmax=1,
+        vmin=-50,
+        vmax=50,
         aspect="auto",
         extent=[0, time_steps / fsamp, num_channels, 0],
         interpolation="none"
     )
-    axs[0].set_ylabel('Channels')
+    axs[0].set_ylabel('DAS channel')
     axs[0].tick_params(labelbottom=False)
 
     # Plot the signal
     axs[1].plot(np.arange(time_steps) / fsamp, signal, color='black', lw=1)
-    axs[1].set_ylabel('Normalized\nStrain Rate')
+    axs[1].set_ylabel('Strain rate \n$(10^{-9} \dot{\epsilon})$')
 
     # Plot the spectrogram
     im2 = axs[2].imshow(
@@ -432,7 +432,7 @@ def plot_das_argparse(data, event_id='plot', output_folder='./plots', fsamp=100,
 
     # Add colorbars
     cbar1 = fig.colorbar(im, ax=axs[:2], orientation='vertical', fraction=0.02, pad=0.02, extend='both')
-    cbar1.set_label('Normalized Strain Rate')
+    cbar1.set_label('Strain rate \n$(10^{-9} \dot{\epsilon})$')
     cbar2 = fig.colorbar(im2, ax=axs[2], orientation='vertical', fraction=0.02, pad=0.02, aspect=5.5, shrink=0.8)
     cbar2.set_label('dB')
 
@@ -513,8 +513,8 @@ def plot_das_grammar_argparse(data, probabilities, probabilities_grammar, event_
         os.makedirs(output_folder)
 
     # Normalize functions
-    normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
-    min_max_normalize = lambda x: 2 * (x - np.min(x)) / (np.max(x) - np.min(x)) - 1
+    #normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
+    #min_max_normalize = lambda x: 2 * (x - np.min(x)) / (np.max(x) - np.min(x)) - 1
 
     # Base colors for visualization
     base_colors = [
@@ -554,8 +554,8 @@ def plot_das_grammar_argparse(data, probabilities, probabilities_grammar, event_
     window_step_duration = window_duration - overlap_duration
 
     # Data normalization
-    data_normalized = normalize(data)
-    mean_signal = min_max_normalize(data_normalized[channel_idx, :])
+    data_normalized = (data)
+    mean_signal = (data_normalized[channel_idx, :])
 
     # Create prediction grids and colormaps
     pred_grid_no_grammar = create_pred_grid(probabilities, selected_channels_length, num_windows, threshold)
@@ -570,18 +570,20 @@ def plot_das_grammar_argparse(data, probabilities, probabilities_grammar, event_
     im1 = axs[0, 0].imshow(
         data_normalized,
         cmap="seismic",
-        vmin=-1,
-        vmax=1,
+        vmin=-50,
+        vmax=50,
         aspect="auto",
         extent=[0, time_steps / fsamp, num_channels, 0],
         interpolation="none",
     )
-    axs[0, 0].set_ylabel('Channels')
+    axs[0, 0].set_ylabel('DAS channel')
     axs[0, 0].set_title("DAS record", fontsize=12, fontweight='bold')
 
     axs[0, 1].imshow(
         data_normalized,
         cmap="seismic",
+        vmin=-50,
+        vmax=50,
         aspect="auto",
         extent=[0, time_steps / fsamp, num_channels, 0],
         interpolation="none"
@@ -593,6 +595,8 @@ def plot_das_grammar_argparse(data, probabilities, probabilities_grammar, event_
     axs[0, 2].imshow(
         data_normalized,
         cmap="seismic",
+        vmin=-50,
+        vmax=50,
         aspect="auto",
         extent=[0, time_steps / fsamp, num_channels, 0],
         interpolation="none",
@@ -664,7 +668,7 @@ def plot_das_grammar_argparse(data, probabilities, probabilities_grammar, event_
 
     # Add colorbars
     cbar1 = fig.colorbar(im1, ax=axs[:2], orientation='vertical', fraction=0.02, pad=0.02, extend='both')
-    cbar1.set_label('Normalized Strain Rate')
+    cbar1.set_label('Strain rate \n$(10^{-9} \dot{\epsilon})$')
 
     cbar2 = fig.colorbar(im2, ax=axs[2], orientation='vertical', fraction=0.02, pad=0.02, aspect=3)
     cbar2.set_label('dB')
@@ -712,10 +716,10 @@ def plot_das_bi_argparse(data, probabilities, event_id='plot', save_path='./plot
                              sharex=True, sharey='row')
 
     # Normalize data
-    normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
-    min_max_normalize = lambda x: 2 * (x - np.min(x)) / (np.max(x) - np.min(x)) - 1
-    data_normalized = normalize(data_selected)
-    channel_signal = min_max_normalize(data[channel_idx, :].reshape(1, -1)).flatten()
+    #normalize = lambda x: (x - np.mean(x, axis=-1, keepdims=True)) / np.std(x, axis=-1, keepdims=True)
+    #min_max_normalize = lambda x: 2 * (x - np.min(x)) / (np.max(x) - np.min(x)) - 1
+    data_normalized = (data_selected)
+    channel_signal = (data[channel_idx, :].reshape(1, -1)).flatten()
 
     # Custom colormap for class labels
     base_colors = [
@@ -741,14 +745,14 @@ def plot_das_bi_argparse(data, probabilities, event_id='plot', save_path='./plot
     custom_cmap = ListedColormap(filtered_colors)
 
     # Plot 1: Original DAS Data
-    axs[0, 0].imshow(data_normalized, cmap="seismic", vmin=-1, vmax=1, aspect="auto",
+    axs[0, 0].imshow(data_normalized, cmap="seismic", vmin=-50, vmax=50, aspect="auto",
                      extent=[0, time_steps / fsamp, selected_channels[-1], selected_channels[0]],
                      interpolation="none")
-    axs[0, 0].set_ylabel('Spatial channels')
+    axs[0, 0].set_ylabel('DAS channel')
     axs[0, 0].set_title('Original DAS', fontweight='bold')
 
     # Plot 2: RNN-DAS Predictions
-    axs[0, 1].imshow(data_normalized, cmap="seismic", vmin=-1, vmax=1, aspect="auto",
+    axs[0, 1].imshow(data_normalized, cmap="seismic", vmin=-50, vmax=50, aspect="auto",
                      extent=[0, time_steps / fsamp, selected_channels[-1], selected_channels[0]],
                      interpolation="none")
     time_extent = [0, time_steps / fsamp, num_channels, 0]
@@ -771,7 +775,7 @@ def plot_das_bi_argparse(data, probabilities, event_id='plot', save_path='./plot
     # Add color bar for normalized strain rate
 
     cbar = fig.colorbar(axs[0, 0].images[0], ax=axs[:2, :].ravel().tolist(), orientation='vertical', fraction=0.02, pad=0.02, extend='both')
-    cbar.set_label('Normalized Strain Rate')
+    cbar.set_label('Strain rate \n$(10^{-9} \dot{\epsilon})$')
     # Compute and plot spectrogram for the third row of subplots
     frequencies, times, Sxx = spectrogram(channel_signal, fs=fsamp, nfft=1024, nperseg=600, noverlap=200)
 

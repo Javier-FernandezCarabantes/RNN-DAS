@@ -48,14 +48,14 @@ def read_fileids(file_path):
 def process_H(H, dt):
     print(">> Processing DAS data...")
     H_processed=H.copy()
-    remove_coherent_noise(H_processed, method='fit')
+    remove_trend(H_processed)
+    remove_coherent_noise(H_processed, method='simple')
     fs = 1/dt
     nyquist = 0.5 * fs
     low = 1 / nyquist
     high = 49 / nyquist
     b, a = butter(4, [low, high], btype='band')
     H_processed[:, :] = filtfilt(b, a, H_processed, axis=1)  
-    remove_trend(H_processed)
     print(">> Processing complete")
     return H_processed
 
