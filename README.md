@@ -215,6 +215,7 @@ Each trace includes:
 - The sampling rate and number of samples.
 
 For instance, for a single DAS channel, the waveform of an event detected by RNN-DAS appears as follows:
+
 ![Trace_example](./trace_singular.png)
 
 While all the detected traces for this event are shown as follows:
