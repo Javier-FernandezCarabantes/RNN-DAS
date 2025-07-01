@@ -177,6 +177,8 @@ By default, the model uses the probability results with the applied grammar func
 
 Using these probability results, the model generates outputs in both CSV and MiniSEED (MSEED) formats. The CSV files are stored in the `RNN-DAS_picks` folder, named according to the corresponding event_id. The MiniSEED files are saved in the `RNN-DAS_waveforms` folder, also named with the event_id. Additionally, different plotting options are stored in the `plots` folder. By default, the `bi` option is enabled, allowing users to visualize both the model’s prediction and the original data.
 
+![RNN-DAS_example](./RNN-DAS_example.png)
+
 ##### CSV Output
 The CSV file contains event detections with the following structure:
 
@@ -213,7 +215,8 @@ Each trace includes:
 - The sampling rate and number of samples.
 
 For instance, for a single DAS channel, the waveform of an event detected by RNN-DAS appears as follows:
-
+![Trace_example](./trace_singular.png)
+While all the detected traces for this event are shown as follows:
 ![Trace_example](./trace_example.png)
 
 ### Example Notebook: Running RNN-DAS on La Palma Data
