@@ -216,7 +216,9 @@ Each trace includes:
 
 For instance, for a single DAS channel, the waveform of an event detected by RNN-DAS appears as follows:
 ![Trace_example](./trace_singular.png)
+
 While all the detected traces for this event are shown as follows:
+
 ![Trace_example](./trace_example.png)
 
 ### Example Notebook: Running RNN-DAS on La Palma Data
