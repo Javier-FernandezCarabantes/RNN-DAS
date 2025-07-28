@@ -28,10 +28,10 @@ The model should work without issues on these versions and later, both on **Wind
 
 ### Windows Installation
 
-To run RNN-DAS on **Windows**, you can install the required dependencies using the provided `requirements_windows.txt` file from the `requirements` folder in the GitHub repository:  
+To run RNN-DAS on **Windows**, you can install the required dependencies using the provided `requirements_RNN_DAS_windows.txt` file from the `requirements` folder in the GitHub repository:  
 
 ```bash
-pip install -r requirements/requirements_windows.txt
+pip install -r requirements/requirements_RNN_DAS_windows.txt
 ```  
 
 Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_windows.yml` file from the `requirements` folder:  
@@ -43,10 +43,10 @@ conda activate RNN_DAS
 
 ### Linux Installation
 
-To run RNN-DAS on **Linux**, you can install the required dependencies using the provided `requirements_linux.txt` file from the `requirements` folder in the GitHub repository:  
+To run RNN-DAS on **Linux**, you can install the required dependencies using the provided `requirements_RNN_DAS_linux.txt` file from the `requirements` folder in the GitHub repository:  
 
 ```bash
-pip install -r requirements/requirements_linux.txt
+pip install -r requirements/requirements_RNN_DAS_linux.txt
 ```  
 
 Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_linux.yml` file from the `requirements` folder:  
