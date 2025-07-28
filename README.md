@@ -22,40 +22,27 @@ The model has been **trained and tested** for functionality in:
 
 - **Python** 3.7  
 - **GPU**: NVIDIA GeForce GTX 1080  
-- **CUDA**: version 9.0  
+- **CUDA**: version 9.0
+- 
+> **Note:** GPU acceleration is generally not needed to run the model, as it relies on CPU for prediction using core parallelization via `joblib`.  
+> If GPU support is desired, the model does support it — but it must be explicitly enabled in the script files `run_RNN_das.py` and `model_builder_RNN_DAS.py`.
 
 The model should work without issues on these versions and later, both on **Windows** and **Linux**.  
 
-### Windows Installation
+### Installation
 
-To run RNN-DAS on **Windows**, you can install the required dependencies using the provided `requirements_RNN_DAS_windows.txt` file from the `requirements` folder in the GitHub repository:  
+To run RNN-DAS, you can install the required dependencies using the provided `requirements_RNN_DAS.txt` file from the `requirements` folder in the GitHub repository:  
 
 ```bash
-pip install -r requirements/requirements_RNN_DAS_windows.txt
+pip install -r requirements/requirements_RNN_DAS.txt
 ```  
 
-Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_windows.yml` file from the `requirements` folder:  
+Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS.yml` file from the `requirements` folder:  
 
 ```bash
-conda env create -f requirements/RNN_DAS_windows.yml
+conda env create -f requirements/RNN_DAS.yml
 conda activate RNN_DAS
 ```
-
-### Linux Installation
-
-To run RNN-DAS on **Linux**, you can install the required dependencies using the provided `requirements_RNN_DAS_linux.txt` file from the `requirements` folder in the GitHub repository:  
-
-```bash
-pip install -r requirements/requirements_RNN_DAS_linux.txt
-```  
-
-Alternatively, you can create the Conda environment `RNN_DAS` using the provided `RNN_DAS_linux.yml` file from the `requirements` folder:  
-
-```bash
-conda env create -f requirements/RNN_DAS_linux.yml
-conda activate RNN_DAS
-```
-
 
 ## Running the Model
 
