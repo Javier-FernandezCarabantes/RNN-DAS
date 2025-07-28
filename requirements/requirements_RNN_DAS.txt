@@ -1,0 +1,9 @@
+torch==1.1.0
+numpy==1.19.*
+pandas
+obspy
+h5py
+joblib
+scipy
+matplotlib
+python-speech-features==0.6

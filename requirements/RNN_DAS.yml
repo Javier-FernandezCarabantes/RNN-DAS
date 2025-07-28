@@ -1,0 +1,20 @@
+name: RNN_DAS
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - pytorch=1.5.0
+  - numpy=1.19.*
+  - pandas
+  - obspy
+  - h5py
+  - joblib
+  - h5py
+  - scipy
+  - matplotlib
+  - pip
+  - pip:
+      - python-speech-features==0.6
+      
