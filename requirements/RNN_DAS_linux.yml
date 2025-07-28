@@ -1,10 +1,12 @@
-name: RNN_DAS
+name: RNN_DAS_test
 channels:
+  - conda-forge  
   - pytorch
   - defaults
 dependencies:
   - _libgcc_mutex=0.1
   - _openmp_mutex=5.1
+  - obspy==1.2.2
   - blas=1.0
   - brotlipy=0.7.0
   - bzip2=1.0.8
@@ -96,4 +98,4 @@ dependencies:
       - python-speech-features==0.6
       - pytz==2025.1
       - torchvision==0.3.0
-      - obspy==1.2.2
+      
