@@ -23,7 +23,7 @@ The model has been **trained and tested** for functionality in:
 - **Python** 3.7  
 - **GPU**: NVIDIA GeForce GTX 1080  
 - **CUDA**: version 9.0
-- 
+  
 > **Note:** GPU acceleration is generally not needed to run the model, as it relies on CPU for prediction using core parallelization via `joblib`.  
 > If GPU support is desired, the model does support it (must be explicitly enabled in the script files `run_RNN_das.py` and `model_builder_RNN_DAS.py`).
 
