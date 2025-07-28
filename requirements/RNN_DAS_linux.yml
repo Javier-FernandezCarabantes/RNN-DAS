@@ -1,4 +1,4 @@
-name: RNN_DAS_test
+name: RNN_DAS
 channels:
   - conda-forge  
   - pytorch
