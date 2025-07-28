@@ -6,7 +6,8 @@ Contains PyTorch models code to instantiate.
 import torch
 import torch.nn as nn
 
-use_cuda = torch.cuda.is_available()
+#use_cuda = torch.cuda.is_available() not necessary for prediction only
+use_cuda = False
 class DRNN(nn.Module):
 
     def __init__(self, n_input, n_hidden, n_layers, dropout=0, nclasses=3, cell_type='GRU', batch_first=False):
