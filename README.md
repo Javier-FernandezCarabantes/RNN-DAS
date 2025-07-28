@@ -25,7 +25,7 @@ The model has been **trained and tested** for functionality in:
 - **CUDA**: version 9.0
 - 
 > **Note:** GPU acceleration is generally not needed to run the model, as it relies on CPU for prediction using core parallelization via `joblib`.  
-> If GPU support is desired, the model does support it — but it must be explicitly enabled in the script files `run_RNN_das.py` and `model_builder_RNN_DAS.py`.
+> If GPU support is desired, the model does support it (must be explicitly enabled in the script files `run_RNN_das.py` and `model_builder_RNN_DAS.py`).
 
 The model should work without issues on these versions and later, both on **Windows** and **Linux**.  
 
