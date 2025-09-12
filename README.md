@@ -240,13 +240,16 @@ Departamento de Física Teórica y del Cosmos, Universidad de Granada, Granada, 
 
 
 ## Citation
-If you use the model, please cite both the preprint and the dataset:
+If you use the model, please cite both the article, the dataset and the software repository:
 
-Preprint:
-Fernandez-Carabantes, J., Titos, M., D'Auria, L., Garcia, J., Garcia, L., & Benitez, C. (2025). RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing. arXiv preprint arXiv:2503.11622.
+Article:
+Fernández-Carabantes, J., Titos, M., D'Auria, L., García, J., García, L., & Benítez, C. (2025). RNN-DAS: A new deep learning approach for detection and real-time monitoring of volcano-tectonic events using distributed acoustic sensing. Journal of Geophysical Research: Solid Earth, 130, e2025JB031756. https://doi.org/10.1029/2025JB031756
 
 Dataset:
 Fernandez-Carabantes, J., Titos, M., D'Auria, L., García, J., García, L., & Benítez, C. (2025). RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing [Data set]. Zenodo. https://doi.org/10.5281/zenodo.15105596
+
+Software Repository:
+Fernández-Carabantes, J., Titos, M., D'Auria, L., García, J., García, L., & Benítez, C. (2025). Javier-FernandezCarabantes/RNN-DAS: RNN-DAS v1.1.0 (v1.1.0). Zenodo. https://doi.org/10.5281/zenodo.15858492
 
 The following works were especially helpful in the development of this model.  
 If you find this project useful, please consider also citing them:
