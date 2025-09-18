@@ -249,7 +249,7 @@ Dataset:
 Fernandez-Carabantes, J., Titos, M., D'Auria, L., García, J., García, L., & Benítez, C. (2025). RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing [Data set]. Zenodo. https://doi.org/10.5281/zenodo.15105596
 
 Software Repository:
-Fernández-Carabantes, J., Titos, M., D'Auria, L., García, J., García, L., & Benítez, C. (2025). Javier-FernandezCarabantes/RNN-DAS: RNN-DAS v1.1.0 (v1.1.0). Zenodo. https://doi.org/10.5281/zenodo.15858492
+Fernández-Carabantes, J., Titos, M., D'Auria, L., García, J., García, L., & Benítez, C. (2025). Javier-FernandezCarabantes/RNN-DAS: RNN-DAS v1.1.1 (v1.1.1). Zenodo. https://doi.org/10.5281/zenodo.15858492
 
 The following works were especially helpful in the development of this model.  
 If you find this project useful, please consider also citing them:
