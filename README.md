@@ -68,7 +68,7 @@ file_path
 - `dx_m`: The spatial sampling in meters (m) between channels.
 - `begin_time`: The start date in the format `'1970-01-01T00:00:00.000'`.
 
-To run the model, you must provide a `files.txt` file, which lists the waveform IDs corresponding to the HDF5 files to be processed. This file should contain one event ID per line:
+To run the model, you must provide a `files.txt` file, which lists the waveform IDs corresponding to the HDF5 files to be processed. This file should contain one file ID per line:
 
 ```
 file_id_1
