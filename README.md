@@ -3,6 +3,13 @@
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15105596.svg)](https://doi.org/10.5281/zenodo.15858492)
 
+![License](https://img.shields.io/github/license/Javier-FernandezCarabantes/RNN-DAS)
+![Code size](https://img.shields.io/github/languages/code-size/Javier-FernandezCarabantes/RNN-DAS)
+![Repo size](https://img.shields.io/github/repo-size/Javier-FernandezCarabantes/RNN-DAS)
+![Stars](https://img.shields.io/github/stars/Javier-FernandezCarabantes/RNN-DAS)
+![Forks](https://img.shields.io/github/forks/Javier-FernandezCarabantes/RNN-DAS)
+![Issues](https://img.shields.io/github/issues/Javier-FernandezCarabantes/RNN-DAS)
+![Last commit](https://img.shields.io/github/last-commit/Javier-FernandezCarabantes/RNN-DAS)
 
 ## Overview
 RNN-DAS is an innovative Deep Learning model based on Recurrent Neural Networks (RNNs) with Long Short-Term Memory (LSTM) cells, developed for real-time Volcano-seismic Signal Recognition (VSR) using Distributed Acoustic Sensing (DAS) measurements. The model was trained on a comprehensive dataset of Volcano-Tectonic (VT) events from the 2021 La Palma eruption, recorded by a High-fidelity submarine Distributed Acoustic Sensing array (HDAS) located near the eruption site.
