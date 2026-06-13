@@ -1,5 +1,3 @@
-# RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing
-
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15105596.svg)](https://doi.org/10.5281/zenodo.15858492)
 
@@ -10,6 +8,10 @@
 ![Forks](https://img.shields.io/github/forks/Javier-FernandezCarabantes/RNN-DAS)
 ![Issues](https://img.shields.io/github/issues/Javier-FernandezCarabantes/RNN-DAS)
 ![Last commit](https://img.shields.io/github/last-commit/Javier-FernandezCarabantes/RNN-DAS)
+
+# RNN-DAS: A New Deep Learning Approach for Detection and Real-Time Monitoring of Volcano-Tectonic Events Using Distributed Acoustic Sensing
+
+
 
 ## Overview
 RNN-DAS is an innovative Deep Learning model based on Recurrent Neural Networks (RNNs) with Long Short-Term Memory (LSTM) cells, developed for real-time Volcano-seismic Signal Recognition (VSR) using Distributed Acoustic Sensing (DAS) measurements. The model was trained on a comprehensive dataset of Volcano-Tectonic (VT) events from the 2021 La Palma eruption, recorded by a High-fidelity submarine Distributed Acoustic Sensing array (HDAS) located near the eruption site.
