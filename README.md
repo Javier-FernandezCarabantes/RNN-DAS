@@ -10,7 +10,6 @@
 ![Forks](https://img.shields.io/github/forks/Javier-FernandezCarabantes/RNN-DAS)
 ![Issues](https://img.shields.io/github/issues/Javier-FernandezCarabantes/RNN-DAS)
 ![Last commit](https://img.shields.io/github/last-commit/Javier-FernandezCarabantes/RNN-DAS)
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=Javier-FernandezCarabantes.RNN-DAS)
 
 ## Overview
 RNN-DAS is an innovative Deep Learning model based on Recurrent Neural Networks (RNNs) with Long Short-Term Memory (LSTM) cells, developed for real-time Volcano-seismic Signal Recognition (VSR) using Distributed Acoustic Sensing (DAS) measurements. The model was trained on a comprehensive dataset of Volcano-Tectonic (VT) events from the 2021 La Palma eruption, recorded by a High-fidelity submarine Distributed Acoustic Sensing array (HDAS) located near the eruption site.
